@@ -115,32 +115,28 @@ Public Class Stock
     Private Sub UpdateStock_btn_Click(sender As Object, e As EventArgs) Handles UpdateStock_btn.Click
         Try
             conn.Open()
-            Dim hasEmptyStock As Boolean = False ' Flag to check for empty stock values
+            Dim hasEmptyStock As Boolean = False 
 
-            ' Loop through rows to check for empty stock
             For j As Integer = 0 To DataGridView1.Rows.Count - 1
                 Dim stockCell = DataGridView1.Rows(j).Cells(5)
                 Dim stockValue As String = If(stockCell.Value, "").ToString().Trim()
                 Dim productName As String = If(DataGridView1.Rows(j).Cells(2).Value, "").ToString().Trim()
 
-                ' Check for empty stock values
                 If String.IsNullOrWhiteSpace(stockValue) Then
                     hasEmptyStock = True
                     MsgBox($"Invalid stock value. Stock should not be left empty.", vbExclamation)
-                    ' Break the loop as there's no need to proceed further
+                 
                     Exit For
                 End If
             Next
 
-            ' If empty stock exists, do not proceed with updates
             If hasEmptyStock Then
                 conn.Close()
                 Exit Sub
             End If
 
-            Dim rowsUpdated As Integer = 0 ' Counter for updated rows
+            Dim rowsUpdated As Integer = 0 
 
-            ' Proceed with updating valid stock values
             For j As Integer = 0 To DataGridView1.Rows.Count - 1
                 Dim stockCell = DataGridView1.Rows(j).Cells(5)
                 Dim stockValue As String = If(stockCell.Value, "").ToString().Trim()
@@ -148,21 +144,19 @@ Public Class Stock
                 Dim stockNumericValue As Integer
 
                 If Integer.TryParse(stockValue, stockNumericValue) AndAlso stockNumericValue >= 0 Then
-                    ' Update the stock value in the database
+                   
                     cmd = New MySqlCommand("UPDATE `tblinventory` SET `Stock`=@Stock WHERE `ProductCode`=@ProductCode", conn)
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@Stock", stockNumericValue)
                     cmd.Parameters.AddWithValue("@ProductCode", productCode)
                     Dim result As Integer = cmd.ExecuteNonQuery()
 
-                    If result > 0 Then rowsUpdated += 1 ' Increment counter if update succeeds
+                    If result > 0 Then rowsUpdated += 1
                 Else
-                    ' Handle invalid numeric stock values
                     MsgBox($"Invalid stock value for Product Code '{productCode}'. Update skipped for this product.", vbExclamation)
                 End If
             Next
 
-            ' Notify user about the result
             If rowsUpdated > 0 Then
                 MsgBox($"{rowsUpdated} product(s) updated successfully.", vbInformation)
             Else
@@ -173,8 +167,8 @@ Public Class Stock
             MsgBox("Error: " & ex.Message, vbCritical)
         Finally
             conn.Close()
-            Load_stock() ' Refresh the DataGridView
-            txt_Search.Clear() ' Clear the search box
+            Load_stock() 
+            txt_Search.Clear() 
         End Try
     End Sub
 
