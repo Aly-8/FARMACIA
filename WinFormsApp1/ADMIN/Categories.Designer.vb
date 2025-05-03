@@ -31,7 +31,7 @@ Partial Class Categories
         Add_btn = New Button()
         Label2 = New Label()
         Label3 = New Label()
-        TextBox2 = New TextBox()
+        txt_SearchCategory = New TextBox()
         Panel3 = New Panel()
         Panel4 = New Panel()
         Logout_btn = New Button()
@@ -45,7 +45,7 @@ Partial Class Categories
         DataGridView1 = New DataGridView()
         Column1 = New DataGridViewTextBoxColumn()
         Column4 = New DataGridViewTextBoxColumn()
-        Button1 = New Button()
+        delete_btn = New Button()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel4.SuspendLayout()
@@ -127,7 +127,7 @@ Partial Class Categories
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Microsoft YaHei", 12.0F, FontStyle.Bold)
+        Label3.Font = New Font("Microsoft YaHei", 12F, FontStyle.Bold)
         Label3.ForeColor = Color.Teal
         Label3.Location = New Point(1170, 252)
         Label3.Name = "Label3"
@@ -135,12 +135,12 @@ Partial Class Categories
         Label3.TabIndex = 11
         Label3.Text = "Search:"
         ' 
-        ' TextBox2
+        ' txt_SearchCategory
         ' 
-        TextBox2.Location = New Point(1277, 252)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(203, 27)
-        TextBox2.TabIndex = 12
+        txt_SearchCategory.Location = New Point(1277, 252)
+        txt_SearchCategory.Name = "txt_SearchCategory"
+        txt_SearchCategory.Size = New Size(203, 27)
+        txt_SearchCategory.TabIndex = 12
         ' 
         ' Panel3
         ' 
@@ -184,7 +184,7 @@ Partial Class Categories
         ' 
         Label1.AutoSize = True
         Label1.FlatStyle = FlatStyle.Flat
-        Label1.Font = New Font("Microsoft Sans Serif", 12.0F)
+        Label1.Font = New Font("Microsoft Sans Serif", 12F)
         Label1.ForeColor = SystemColors.ButtonHighlight
         Label1.Location = New Point(1, 476)
         Label1.Name = "Label1"
@@ -312,29 +312,29 @@ Partial Class Categories
         Column4.Name = "Column4"
         Column4.ReadOnly = True
         ' 
-        ' Button1
+        ' delete_btn
         ' 
-        Button1.Font = New Font("Lucida Sans", 7.8F, FontStyle.Bold)
-        Button1.ForeColor = Color.SteelBlue
-        Button1.Location = New Point(1142, 168)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(67, 27)
-        Button1.TabIndex = 16
-        Button1.Text = "DELETE"
-        Button1.UseVisualStyleBackColor = True
+        delete_btn.Font = New Font("Lucida Sans", 7.8F, FontStyle.Bold)
+        delete_btn.ForeColor = Color.SteelBlue
+        delete_btn.Location = New Point(1142, 168)
+        delete_btn.Name = "delete_btn"
+        delete_btn.Size = New Size(67, 27)
+        delete_btn.TabIndex = 16
+        delete_btn.Text = "DELETE"
+        delete_btn.UseVisualStyleBackColor = True
         ' 
         ' Categories
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.InactiveCaption
         ClientSize = New Size(1500, 700)
         ControlBox = False
-        Controls.Add(Button1)
+        Controls.Add(delete_btn)
         Controls.Add(DataGridView1)
         Controls.Add(Panel4)
         Controls.Add(Panel3)
-        Controls.Add(TextBox2)
+        Controls.Add(txt_SearchCategory)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Add_btn)
@@ -362,7 +362,7 @@ Partial Class Categories
     Friend WithEvents Add_btn As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txt_SearchCategory As TextBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label1 As Label
@@ -377,5 +377,5 @@ Partial Class Categories
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As Button
+    Friend WithEvents delete_btn As Button
 End Class

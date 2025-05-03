@@ -9,17 +9,33 @@ Public Class Stock
     Sub Load_stock()
         DataGridView1.Rows.Clear()
         Try
-            conn.Open()
+            If conn.State = ConnectionState.Closed Then
+                conn.Open()
+            End If
+
             cmd = New MySqlCommand("SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price` FROM `tblinventory`", conn)
             dr = cmd.ExecuteReader()
-            While dr.Read
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("ProductCode"), dr.Item("ProductName"), dr.Item("CategoryName"), dr.Item("ProductDescription"), dr.Item("Stock"), dr.Item("Price"))
+
+            While dr.Read()
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1,
+                                   dr("ProductCode").ToString(),
+                                   dr("ProductName").ToString(),
+                                   dr("CategoryName").ToString(),
+                                   dr("ProductDescription").ToString(),
+                                   dr("Stock").ToString(),
+                                   dr("Price").ToString())
             End While
+
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("Error while loading stock: " & ex.Message)
+        Finally
+            If dr IsNot Nothing AndAlso Not dr.IsClosed Then
+                dr.Close()
+            End If
+            conn.Close()
         End Try
-        conn.Close()
     End Sub
+
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
@@ -66,4 +82,102 @@ Public Class Stock
         Login.Show()
         Hide()
     End Sub
+
+    Private Sub txt_Search_TextChanged(sender As Object, e As EventArgs) Handles txt_Search.TextChanged
+        Try
+            DataGridView1.Rows.Clear()
+            conn.Open()
+            cmd = New MySqlCommand("SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price` 
+                                FROM `tblinventory` 
+                                WHERE `ProductCode` LIKE @Search OR `ProductName` LIKE @Search OR `CategoryName` LIKE @Search", conn)
+            cmd.Parameters.AddWithValue("@Search", "%" & txt_Search.Text & "%")
+            dr = cmd.ExecuteReader()
+            While dr.Read()
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1,
+                                   dr("ProductCode").ToString(),
+                                   dr("ProductName").ToString(),
+                                   dr("CategoryName").ToString(),
+                                   dr("ProductDescription").ToString(),
+                                   dr("Stock").ToString(),
+                                   dr("Price").ToString())
+            End While
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, vbCritical)
+        Finally
+            If dr IsNot Nothing AndAlso Not dr.IsClosed Then
+                dr.Close()
+            End If
+            conn.Close()
+        End Try
+    End Sub
+
+
+    Private Sub UpdateStock_btn_Click(sender As Object, e As EventArgs) Handles UpdateStock_btn.Click
+        Try
+            conn.Open()
+            Dim hasEmptyStock As Boolean = False ' Flag to check for empty stock values
+
+            ' Loop through rows to check for empty stock
+            For j As Integer = 0 To DataGridView1.Rows.Count - 1
+                Dim stockCell = DataGridView1.Rows(j).Cells(5)
+                Dim stockValue As String = If(stockCell.Value, "").ToString().Trim()
+                Dim productName As String = If(DataGridView1.Rows(j).Cells(2).Value, "").ToString().Trim()
+
+                ' Check for empty stock values
+                If String.IsNullOrWhiteSpace(stockValue) Then
+                    hasEmptyStock = True
+                    MsgBox($"Invalid stock value. Stock should not be left empty.", vbExclamation)
+                    ' Break the loop as there's no need to proceed further
+                    Exit For
+                End If
+            Next
+
+            ' If empty stock exists, do not proceed with updates
+            If hasEmptyStock Then
+                conn.Close()
+                Exit Sub
+            End If
+
+            Dim rowsUpdated As Integer = 0 ' Counter for updated rows
+
+            ' Proceed with updating valid stock values
+            For j As Integer = 0 To DataGridView1.Rows.Count - 1
+                Dim stockCell = DataGridView1.Rows(j).Cells(5)
+                Dim stockValue As String = If(stockCell.Value, "").ToString().Trim()
+                Dim productCode As String = If(DataGridView1.Rows(j).Cells(1).Value, "").ToString().Trim()
+                Dim stockNumericValue As Integer
+
+                If Integer.TryParse(stockValue, stockNumericValue) AndAlso stockNumericValue >= 0 Then
+                    ' Update the stock value in the database
+                    cmd = New MySqlCommand("UPDATE `tblinventory` SET `Stock`=@Stock WHERE `ProductCode`=@ProductCode", conn)
+                    cmd.Parameters.Clear()
+                    cmd.Parameters.AddWithValue("@Stock", stockNumericValue)
+                    cmd.Parameters.AddWithValue("@ProductCode", productCode)
+                    Dim result As Integer = cmd.ExecuteNonQuery()
+
+                    If result > 0 Then rowsUpdated += 1 ' Increment counter if update succeeds
+                Else
+                    ' Handle invalid numeric stock values
+                    MsgBox($"Invalid stock value for Product Code '{productCode}'. Update skipped for this product.", vbExclamation)
+                End If
+            Next
+
+            ' Notify user about the result
+            If rowsUpdated > 0 Then
+                MsgBox($"{rowsUpdated} product(s) updated successfully.", vbInformation)
+            Else
+                MsgBox("No products were updated.", vbExclamation)
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, vbCritical)
+        Finally
+            conn.Close()
+            Load_stock() ' Refresh the DataGridView
+            txt_Search.Clear() ' Clear the search box
+        End Try
+    End Sub
+
+
+
 End Class

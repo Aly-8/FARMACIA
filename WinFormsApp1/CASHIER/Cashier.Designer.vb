@@ -22,7 +22,7 @@ Partial Class Cashier
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         Label4 = New Label()
         Label3 = New Label()
@@ -51,6 +51,7 @@ Partial Class Cashier
         Column5 = New DataGridViewTextBoxColumn()
         Column7 = New DataGridViewTextBoxColumn()
         Column8 = New DataGridViewTextBoxColumn()
+        TextBox2 = New TextBox()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
@@ -111,6 +112,7 @@ Partial Class Cashier
         ' 
         ' Panel2
         ' 
+        Panel2.Controls.Add(TextBox2)
         Panel2.Controls.Add(TextBox1)
         Panel2.Controls.Add(Label7)
         Panel2.Controls.Add(Label6)
@@ -123,7 +125,7 @@ Partial Class Cashier
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(163, 10)
+        TextBox1.Location = New Point(163, 6)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(125, 27)
         TextBox1.TabIndex = 16
@@ -134,9 +136,9 @@ Partial Class Cashier
         Label7.AutoSize = True
         Label7.Location = New Point(13, 40)
         Label7.Name = "Label7"
-        Label7.Size = New Size(110, 20)
+        Label7.Size = New Size(223, 20)
         Label7.TabIndex = 15
-        Label7.Text = "Product Code :"
+        Label7.Text = "Product Name / Product Code :"
         ' 
         ' Label6
         ' 
@@ -179,7 +181,7 @@ Partial Class Cashier
         TableLayoutPanel1.Location = New Point(0, 503)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
         TableLayoutPanel1.Size = New Size(1271, 41)
         TableLayoutPanel1.TabIndex = 3
         ' 
@@ -289,14 +291,14 @@ Partial Class Cashier
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column6, Column5, Column7, Column8})
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Window
+        DataGridViewCellStyle1.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.Desktop
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.Dock = DockStyle.Fill
         DataGridView1.Location = New Point(0, 134)
         DataGridView1.Name = "DataGridView1"
@@ -377,9 +379,16 @@ Partial Class Cashier
         Column8.ReadOnly = True
         Column8.Width = 71
         ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(242, 39)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(576, 27)
+        TextBox2.TabIndex = 17
+        ' 
         ' Cashier
         ' 
-        AutoScaleDimensions = New SizeF(9.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(9F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.LightSteelBlue
         ClientSize = New Size(1271, 544)
@@ -388,7 +397,7 @@ Partial Class Cashier
         Controls.Add(TableLayoutPanel1)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
-        Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Margin = New Padding(4, 3, 4, 3)
         Name = "Cashier"
         StartPosition = FormStartPosition.CenterScreen
@@ -430,4 +439,5 @@ Partial Class Cashier
     Friend WithEvents f4_report As Button
     Friend WithEvents f3_setdiscount As Button
     Friend WithEvents f2_cancel As Button
+    Friend WithEvents TextBox2 As TextBox
 End Class

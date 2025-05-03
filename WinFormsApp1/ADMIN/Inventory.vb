@@ -147,7 +147,7 @@ Public Class Inventory 'manageproduct
     End Sub
 
     Private Sub search_btn_Click(sender As Object, e As EventArgs) Handles search_btn.Click
-        txt_productcode.ReadOnly = True
+        txt_productcode.ReadOnly = False
         If String.IsNullOrWhiteSpace(txt_SearchProductCode.Text) Then
             MessageBox.Show("Please enter a Product Code.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -177,6 +177,7 @@ Public Class Inventory 'manageproduct
             If dr IsNot Nothing AndAlso Not dr.IsClosed Then dr.Close()
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
+        txt_SearchProductCode.Clear()
     End Sub
 
     Private Sub update_btn_Click(sender As Object, e As EventArgs) Handles update_btn.Click
@@ -252,4 +253,5 @@ Public Class Inventory 'manageproduct
         Login.Show()
         Hide()
     End Sub
+
 End Class

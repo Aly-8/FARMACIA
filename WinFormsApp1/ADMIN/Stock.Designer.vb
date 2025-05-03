@@ -22,7 +22,7 @@ Partial Class Stock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Exit_btn = New Button()
         Panel1 = New Panel()
         fdg = New PictureBox()
@@ -47,6 +47,8 @@ Partial Class Stock
         txt_Search = New TextBox()
         Label2 = New Label()
         AddCategory_lbl = New Label()
+        UpdateStock_btn = New Button()
+        Label3 = New Label()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
@@ -228,20 +230,19 @@ Partial Class Stock
         DataGridView1.BackgroundColor = Color.White
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7})
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = SystemColors.Window
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Info
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = SystemColors.Window
+        DataGridViewCellStyle8.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle8.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = SystemColors.Info
+        DataGridViewCellStyle8.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle8
         DataGridView1.Location = New Point(293, 201)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(1195, 389)
+        DataGridView1.Size = New Size(1195, 343)
         DataGridView1.TabIndex = 21
         ' 
         ' Column1
@@ -251,6 +252,7 @@ Partial Class Stock
         Column1.MinimumWidth = 6
         Column1.Name = "Column1"
         Column1.ReadOnly = True
+        Column1.Resizable = DataGridViewTriState.False
         Column1.Width = 47
         ' 
         ' Column2
@@ -260,6 +262,7 @@ Partial Class Stock
         Column2.MinimumWidth = 6
         Column2.Name = "Column2"
         Column2.ReadOnly = True
+        Column2.Resizable = DataGridViewTriState.False
         Column2.Width = 77
         ' 
         ' Column3
@@ -269,6 +272,7 @@ Partial Class Stock
         Column3.MinimumWidth = 6
         Column3.Name = "Column3"
         Column3.ReadOnly = True
+        Column3.Resizable = DataGridViewTriState.False
         ' 
         ' Column4
         ' 
@@ -277,6 +281,7 @@ Partial Class Stock
         Column4.MinimumWidth = 6
         Column4.Name = "Column4"
         Column4.ReadOnly = True
+        Column4.Resizable = DataGridViewTriState.False
         Column4.Width = 110
         ' 
         ' Column5
@@ -285,6 +290,7 @@ Partial Class Stock
         Column5.MinimumWidth = 6
         Column5.Name = "Column5"
         Column5.ReadOnly = True
+        Column5.Resizable = DataGridViewTriState.False
         Column5.Width = 125
         ' 
         ' Column6
@@ -293,8 +299,7 @@ Partial Class Stock
         Column6.HeaderText = "STOCK"
         Column6.MinimumWidth = 6
         Column6.Name = "Column6"
-        Column6.ReadOnly = True
-        Column6.Resizable = DataGridViewTriState.True
+        Column6.Resizable = DataGridViewTriState.False
         Column6.Width = 82
         ' 
         ' Column7
@@ -304,6 +309,7 @@ Partial Class Stock
         Column7.MinimumWidth = 6
         Column7.Name = "Column7"
         Column7.ReadOnly = True
+        Column7.Resizable = DataGridViewTriState.False
         Column7.Width = 76
         ' 
         ' txt_Search
@@ -329,11 +335,36 @@ Partial Class Stock
         AddCategory_lbl.AutoSize = True
         AddCategory_lbl.Font = New Font("Palatino Linotype", 25.8F, FontStyle.Bold)
         AddCategory_lbl.ForeColor = Color.Teal
-        AddCategory_lbl.Location = New Point(789, 93)
+        AddCategory_lbl.Location = New Point(794, 93)
         AddCategory_lbl.Name = "AddCategory_lbl"
         AddCategory_lbl.Size = New Size(180, 58)
         AddCategory_lbl.TabIndex = 28
         AddCategory_lbl.Text = "STOCK"
+        ' 
+        ' UpdateStock_btn
+        ' 
+        UpdateStock_btn.BackColor = Color.DarkCyan
+        UpdateStock_btn.FlatAppearance.BorderSize = 0
+        UpdateStock_btn.FlatStyle = FlatStyle.Popup
+        UpdateStock_btn.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        UpdateStock_btn.ForeColor = SystemColors.ButtonHighlight
+        UpdateStock_btn.Location = New Point(1345, 156)
+        UpdateStock_btn.Name = "UpdateStock_btn"
+        UpdateStock_btn.Size = New Size(142, 31)
+        UpdateStock_btn.TabIndex = 29
+        UpdateStock_btn.Text = "UPDATE STOCK"
+        UpdateStock_btn.UseVisualStyleBackColor = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label3.ForeColor = Color.IndianRed
+        Label3.Location = New Point(811, 561)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(677, 20)
+        Label3.TabIndex = 30
+        Label3.Text = "NOTE: Do not leave the stock blank, as it will invalidate the data you inserted when updating."
         ' 
         ' Stock
         ' 
@@ -342,6 +373,8 @@ Partial Class Stock
         BackColor = SystemColors.GradientInactiveCaption
         ClientSize = New Size(1500, 600)
         ControlBox = False
+        Controls.Add(Label3)
+        Controls.Add(UpdateStock_btn)
         Controls.Add(AddCategory_lbl)
         Controls.Add(txt_Search)
         Controls.Add(Label2)
@@ -376,6 +409,11 @@ Partial Class Stock
     Friend WithEvents AddItem_bttn As Button
     Friend WithEvents fdg As PictureBox
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents txt_Search As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents AddCategory_lbl As Label
+    Friend WithEvents Logout_btn As Button
+    Friend WithEvents UpdateStock_btn As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -383,8 +421,5 @@ Partial Class Stock
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents txt_Search As TextBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents AddCategory_lbl As Label
-    Friend WithEvents Logout_btn As Button
+    Friend WithEvents Label3 As Label
 End Class
