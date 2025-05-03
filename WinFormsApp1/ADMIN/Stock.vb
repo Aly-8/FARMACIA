@@ -115,7 +115,7 @@ Public Class Stock
     Private Sub UpdateStock_btn_Click(sender As Object, e As EventArgs) Handles UpdateStock_btn.Click
         Try
             conn.Open()
-            Dim hasEmptyStock As Boolean = False 
+            Dim hasEmptyStock As Boolean = False
 
             For j As Integer = 0 To DataGridView1.Rows.Count - 1
                 Dim stockCell = DataGridView1.Rows(j).Cells(5)
@@ -125,7 +125,7 @@ Public Class Stock
                 If String.IsNullOrWhiteSpace(stockValue) Then
                     hasEmptyStock = True
                     MsgBox($"Invalid stock value. Stock should not be left empty.", vbExclamation)
-                 
+
                     Exit For
                 End If
             Next
@@ -135,7 +135,7 @@ Public Class Stock
                 Exit Sub
             End If
 
-            Dim rowsUpdated As Integer = 0 
+            Dim rowsUpdated As Integer = 0
 
             For j As Integer = 0 To DataGridView1.Rows.Count - 1
                 Dim stockCell = DataGridView1.Rows(j).Cells(5)
@@ -144,7 +144,7 @@ Public Class Stock
                 Dim stockNumericValue As Integer
 
                 If Integer.TryParse(stockValue, stockNumericValue) AndAlso stockNumericValue >= 0 Then
-                   
+
                     cmd = New MySqlCommand("UPDATE `tblinventory` SET `Stock`=@Stock WHERE `ProductCode`=@ProductCode", conn)
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@Stock", stockNumericValue)
@@ -167,8 +167,8 @@ Public Class Stock
             MsgBox("Error: " & ex.Message, vbCritical)
         Finally
             conn.Close()
-            Load_stock() 
-            txt_Search.Clear() 
+            Load_stock()
+            txt_Search.Clear()
         End Try
     End Sub
 
