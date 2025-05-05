@@ -23,6 +23,7 @@ Partial Class SalesReport
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesReport))
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         AddCategory_lbl = New Label()
         Panel2 = New Panel()
         LOGOUT = New Label()
@@ -36,13 +37,29 @@ Partial Class SalesReport
         Panel1 = New Panel()
         fdg = New PictureBox()
         Exit_btn = New Button()
-        TabControl1 = New TabControl()
-        TabPage1 = New TabPage()
-        TabPage2 = New TabPage()
+        Panel3 = New Panel()
+        Label2 = New Label()
+        txt_Search = New TextBox()
+        rdbtn_today = New RadioButton()
+        rbtn_currentmonth = New RadioButton()
+        btn_Filter = New Panel()
+        DateTimePicker1 = New DateTimePicker()
+        DateTimePicker2 = New DateTimePicker()
+        Button1 = New Button()
+        Label3 = New Label()
+        DataGridView1 = New DataGridView()
+        Column1 = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewButtonColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column6 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
         Panel2.SuspendLayout()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
-        TabControl1.SuspendLayout()
+        Panel3.SuspendLayout()
+        btn_Filter.SuspendLayout()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' AddCategory_lbl
@@ -50,7 +67,7 @@ Partial Class SalesReport
         AddCategory_lbl.AutoSize = True
         AddCategory_lbl.Font = New Font("Palatino Linotype", 25.8F, FontStyle.Bold)
         AddCategory_lbl.ForeColor = Color.Teal
-        AddCategory_lbl.Location = New Point(761, 93)
+        AddCategory_lbl.Location = New Point(318, 105)
         AddCategory_lbl.Name = "AddCategory_lbl"
         AddCategory_lbl.Size = New Size(273, 58)
         AddCategory_lbl.TabIndex = 8
@@ -210,35 +227,197 @@ Partial Class SalesReport
         Exit_btn.Text = "X"
         Exit_btn.UseVisualStyleBackColor = False
         ' 
-        ' TabControl1
+        ' Panel3
         ' 
-        TabControl1.Controls.Add(TabPage1)
-        TabControl1.Controls.Add(TabPage2)
-        TabControl1.Location = New Point(314, 183)
-        TabControl1.Name = "TabControl1"
-        TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(1151, 388)
-        TabControl1.TabIndex = 9
+        Panel3.BackColor = SystemColors.GradientInactiveCaption
+        Panel3.Controls.Add(Button1)
+        Panel3.Controls.Add(DateTimePicker2)
+        Panel3.Controls.Add(DateTimePicker1)
+        Panel3.Controls.Add(rbtn_currentmonth)
+        Panel3.Controls.Add(rdbtn_today)
+        Panel3.Controls.Add(txt_Search)
+        Panel3.Controls.Add(Label2)
+        Panel3.Location = New Point(320, 168)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New Size(1140, 79)
+        Panel3.TabIndex = 9
         ' 
-        ' TabPage1
+        ' Label2
         ' 
-        TabPage1.Location = New Point(4, 29)
-        TabPage1.Name = "TabPage1"
-        TabPage1.Padding = New Padding(3)
-        TabPage1.Size = New Size(1143, 355)
-        TabPage1.TabIndex = 0
-        TabPage1.Text = "TabPage1"
-        TabPage1.UseVisualStyleBackColor = True
+        Label2.AutoSize = True
+        Label2.Font = New Font("Century Schoolbook", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.Teal
+        Label2.Location = New Point(26, 29)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(63, 19)
+        Label2.TabIndex = 0
+        Label2.Text = "Search"
         ' 
-        ' TabPage2
+        ' txt_Search
         ' 
-        TabPage2.Location = New Point(4, 29)
-        TabPage2.Name = "TabPage2"
-        TabPage2.Padding = New Padding(3)
-        TabPage2.Size = New Size(1143, 355)
-        TabPage2.TabIndex = 1
-        TabPage2.Text = "TabPage2"
-        TabPage2.UseVisualStyleBackColor = True
+        txt_Search.Location = New Point(99, 25)
+        txt_Search.Name = "txt_Search"
+        txt_Search.Size = New Size(366, 27)
+        txt_Search.TabIndex = 26
+        ' 
+        ' rdbtn_today
+        ' 
+        rdbtn_today.AutoSize = True
+        rdbtn_today.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rdbtn_today.Location = New Point(492, 26)
+        rdbtn_today.Name = "rdbtn_today"
+        rdbtn_today.Size = New Size(71, 24)
+        rdbtn_today.TabIndex = 27
+        rdbtn_today.TabStop = True
+        rdbtn_today.Text = "Today"
+        rdbtn_today.UseVisualStyleBackColor = True
+        ' 
+        ' rbtn_currentmonth
+        ' 
+        rbtn_currentmonth.AutoSize = True
+        rbtn_currentmonth.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbtn_currentmonth.Location = New Point(580, 26)
+        rbtn_currentmonth.Name = "rbtn_currentmonth"
+        rbtn_currentmonth.Size = New Size(132, 24)
+        rbtn_currentmonth.TabIndex = 28
+        rbtn_currentmonth.TabStop = True
+        rbtn_currentmonth.Text = "Current Month"
+        rbtn_currentmonth.UseVisualStyleBackColor = True
+        ' 
+        ' btn_Filter
+        ' 
+        btn_Filter.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btn_Filter.AutoSize = True
+        btn_Filter.BackColor = SystemColors.ControlLight
+        btn_Filter.Controls.Add(DataGridView1)
+        btn_Filter.Location = New Point(320, 253)
+        btn_Filter.Margin = New Padding(2)
+        btn_Filter.Name = "btn_Filter"
+        btn_Filter.Size = New Size(1140, 328)
+        btn_Filter.TabIndex = 10
+        ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.CalendarTrailingForeColor = Color.Gray
+        DateTimePicker1.Format = DateTimePickerFormat.Short
+        DateTimePicker1.Location = New Point(729, 23)
+        DateTimePicker1.Margin = New Padding(0, 0, 0, 0)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(137, 27)
+        DateTimePicker1.TabIndex = 29
+        DateTimePicker1.Value = New Date(2025, 5, 5, 0, 0, 0, 0)
+        ' 
+        ' DateTimePicker2
+        ' 
+        DateTimePicker2.Format = DateTimePickerFormat.Short
+        DateTimePicker2.Location = New Point(883, 24)
+        DateTimePicker2.Margin = New Padding(0)
+        DateTimePicker2.Name = "DateTimePicker2"
+        DateTimePicker2.Size = New Size(137, 27)
+        DateTimePicker2.TabIndex = 30
+        ' 
+        ' Button1
+        ' 
+        Button1.BackColor = Color.DarkCyan
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Font = New Font("Century Schoolbook", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button1.ForeColor = SystemColors.ButtonHighlight
+        Button1.Location = New Point(1036, 24)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(94, 29)
+        Button1.TabIndex = 31
+        Button1.Text = "Filter"
+        Button1.UseVisualStyleBackColor = False
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Label3.Font = New Font("Century Schoolbook", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.ForeColor = Color.DarkSlateGray
+        Label3.ImageAlign = ContentAlignment.TopCenter
+        Label3.Location = New Point(1167, 105)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(293, 58)
+        Label3.TabIndex = 0
+        Label3.Text = "0.00"
+        Label3.TextAlign = ContentAlignment.MiddleRight
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.AllowUserToAddRows = False
+        DataGridView1.AllowUserToDeleteRows = False
+        DataGridView1.BackgroundColor = SystemColors.ButtonFace
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column6, Column5})
+        DataGridView1.Dock = DockStyle.Fill
+        DataGridView1.GridColor = SystemColors.ButtonShadow
+        DataGridView1.Location = New Point(0, 0)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.ReadOnly = True
+        DataGridView1.RowHeadersVisible = False
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(1140, 328)
+        DataGridView1.TabIndex = 0
+        ' 
+        ' Column1
+        ' 
+        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column1.HeaderText = "#"
+        Column1.MinimumWidth = 6
+        Column1.Name = "Column1"
+        Column1.ReadOnly = True
+        Column1.Width = 47
+        ' 
+        ' Column2
+        ' 
+        Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Column2.HeaderText = "Transaction No."
+        Column2.MinimumWidth = 6
+        Column2.Name = "Column2"
+        Column2.ReadOnly = True
+        ' 
+        ' Column3
+        ' 
+        Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Format = "d"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Column3.DefaultCellStyle = DataGridViewCellStyle3
+        Column3.HeaderText = "Date"
+        Column3.MinimumWidth = 6
+        Column3.Name = "Column3"
+        Column3.ReadOnly = True
+        Column3.Resizable = DataGridViewTriState.True
+        Column3.SortMode = DataGridViewColumnSortMode.Automatic
+        Column3.Width = 70
+        ' 
+        ' Column4
+        ' 
+        Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column4.HeaderText = "Month"
+        Column4.MinimumWidth = 6
+        Column4.Name = "Column4"
+        Column4.ReadOnly = True
+        Column4.Visible = False
+        Column4.Width = 81
+        ' 
+        ' Column6
+        ' 
+        Column6.HeaderText = "Month & Year"
+        Column6.MinimumWidth = 6
+        Column6.Name = "Column6"
+        Column6.ReadOnly = True
+        Column6.Visible = False
+        Column6.Width = 125
+        ' 
+        ' Column5
+        ' 
+        Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column5.HeaderText = "Grand Total"
+        Column5.MinimumWidth = 6
+        Column5.Name = "Column5"
+        Column5.ReadOnly = True
+        Column5.Width = 115
         ' 
         ' SalesReport
         ' 
@@ -247,7 +426,9 @@ Partial Class SalesReport
         BackColor = SystemColors.InactiveCaption
         ClientSize = New Size(1500, 600)
         ControlBox = False
-        Controls.Add(TabControl1)
+        Controls.Add(Label3)
+        Controls.Add(btn_Filter)
+        Controls.Add(Panel3)
         Controls.Add(AddCategory_lbl)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
@@ -259,7 +440,10 @@ Partial Class SalesReport
         Panel2.PerformLayout()
         Panel1.ResumeLayout(False)
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
-        TabControl1.ResumeLayout(False)
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
+        btn_Filter.ResumeLayout(False)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -276,8 +460,22 @@ Partial Class SalesReport
     Friend WithEvents Dashboard_btn As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Exit_btn As Button
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
     Friend WithEvents fdg As PictureBox
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txt_Search As TextBox
+    Friend WithEvents rbtn_currentmonth As RadioButton
+    Friend WithEvents rdbtn_today As RadioButton
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents btn_Filter As Panel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewButtonColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class
