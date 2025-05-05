@@ -6,6 +6,8 @@ Public Class Cashier
         DataGridView1.RowTemplate.Height = 30
         txt_SearchProductCode.Focus()
         total()
+        btn_Pay.Enabled = False
+        load_discount()
     End Sub
 
     Public Sub ADDLIST()
@@ -113,6 +115,65 @@ Public Class Cashier
     End Sub
 
     Private Sub txt_amountReceived_TextChanged(sender As Object, e As EventArgs) Handles txt_amountReceived.TextChanged
-        lbl_Change.Text = Format(CDec(txt_amountReceived.Text - lbl_GrandTotal.Text), "#,##0.00")
+        Dim amountReceived As Decimal = 0
+        Dim grandTotal As Decimal = 0
+
+        If Not String.IsNullOrEmpty(txt_amountReceived.Text) AndAlso Decimal.TryParse(txt_amountReceived.Text, amountReceived) Then
+        Else
+            amountReceived = 0
+        End If
+
+        If Not String.IsNullOrEmpty(lbl_GrandTotal.Text) AndAlso Decimal.TryParse(lbl_GrandTotal.Text, grandTotal) Then
+        Else
+            grandTotal = 0
+        End If
+
+        lbl_Change.Text = Format(amountReceived - grandTotal, "#,##0.00")
+
+        If String.IsNullOrEmpty(txt_amountReceived.Text) Then
+            lbl_Change.Text = "0.00"
+        End If
+
+        btn_Pay.Enabled = True
+
     End Sub
+
+
+
+    Sub load_discount()
+        Try
+            If conn.State = ConnectionState.Closed Then
+                conn.Open()
+            End If
+
+            cmd = New MySqlCommand("SELECT `discount` FROM `tbldiscount` WHERE `discId` = @discId", conn)
+            cmd.Parameters.AddWithValue("@discId", "1001")
+
+            dr = cmd.ExecuteReader()
+            If dr.Read() Then
+                txt_discount.Text = dr("discount").ToString().Trim()
+            Else
+                MsgBox("No discount found for the given ID.", vbExclamation)
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error loading discount: " & ex.Message, vbCritical)
+        Finally
+            If dr IsNot Nothing AndAlso Not dr.IsClosed Then
+                dr.Close()
+            End If
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
+
+    Private Sub f3_setdiscount_Click(sender As Object, e As EventArgs) Handles f3_setdiscount.Click
+        Dim discountForm As New Discount()
+        discountForm.ShowDialog()
+
+        load_discount()
+    End Sub
+
 End Class
