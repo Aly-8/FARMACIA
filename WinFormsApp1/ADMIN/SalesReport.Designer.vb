@@ -23,7 +23,7 @@ Partial Class SalesReport
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesReport))
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         AddCategory_lbl = New Label()
         Panel2 = New Panel()
         LOGOUT = New Label()
@@ -43,7 +43,6 @@ Partial Class SalesReport
         rdbtn_today = New RadioButton()
         rbtn_currentmonth = New RadioButton()
         btn_Filter = New Panel()
-        DateTimePicker1 = New DateTimePicker()
         DateTimePicker2 = New DateTimePicker()
         Button1 = New Button()
         Label3 = New Label()
@@ -54,6 +53,7 @@ Partial Class SalesReport
         Column4 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
         Column5 = New DataGridViewTextBoxColumn()
+        DateTimePicker1 = New DateTimePicker()
         Panel2.SuspendLayout()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
@@ -230,9 +230,9 @@ Partial Class SalesReport
         ' Panel3
         ' 
         Panel3.BackColor = SystemColors.GradientInactiveCaption
+        Panel3.Controls.Add(DateTimePicker1)
         Panel3.Controls.Add(Button1)
         Panel3.Controls.Add(DateTimePicker2)
-        Panel3.Controls.Add(DateTimePicker1)
         Panel3.Controls.Add(rbtn_currentmonth)
         Panel3.Controls.Add(rdbtn_today)
         Panel3.Controls.Add(txt_Search)
@@ -295,17 +295,6 @@ Partial Class SalesReport
         btn_Filter.Name = "btn_Filter"
         btn_Filter.Size = New Size(1140, 328)
         btn_Filter.TabIndex = 10
-        ' 
-        ' DateTimePicker1
-        ' 
-        DateTimePicker1.CalendarTrailingForeColor = Color.Gray
-        DateTimePicker1.Format = DateTimePickerFormat.Short
-        DateTimePicker1.Location = New Point(729, 23)
-        DateTimePicker1.Margin = New Padding(0, 0, 0, 0)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(137, 27)
-        DateTimePicker1.TabIndex = 29
-        DateTimePicker1.Value = New Date(2025, 5, 5, 0, 0, 0, 0)
         ' 
         ' DateTimePicker2
         ' 
@@ -379,10 +368,10 @@ Partial Class SalesReport
         ' Column3
         ' 
         Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Column3.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Format = "d"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Column3.DefaultCellStyle = DataGridViewCellStyle4
         Column3.HeaderText = "Date"
         Column3.MinimumWidth = 6
         Column3.Name = "Column3"
@@ -418,6 +407,17 @@ Partial Class SalesReport
         Column5.Name = "Column5"
         Column5.ReadOnly = True
         Column5.Width = 115
+        ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.CalendarTrailingForeColor = Color.Gray
+        DateTimePicker1.Format = DateTimePickerFormat.Short
+        DateTimePicker1.Location = New Point(730, 24)
+        DateTimePicker1.Margin = New Padding(0)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(137, 27)
+        DateTimePicker1.TabIndex = 32
+        DateTimePicker1.Value = New Date(2025, 5, 5, 0, 0, 0, 0)
         ' 
         ' SalesReport
         ' 
@@ -467,7 +467,6 @@ Partial Class SalesReport
     Friend WithEvents rbtn_currentmonth As RadioButton
     Friend WithEvents rdbtn_today As RadioButton
     Friend WithEvents DateTimePicker2 As DateTimePicker
-    Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents btn_Filter As Panel
     Friend WithEvents Button1 As Button
     Friend WithEvents Label3 As Label
@@ -478,4 +477,5 @@ Partial Class SalesReport
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class
