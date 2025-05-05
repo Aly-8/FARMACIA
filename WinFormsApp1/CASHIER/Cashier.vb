@@ -199,12 +199,12 @@ Public Class Cashier
                         OrderNo, OrderDate, OrderMonth, OrderMonthYear,
                         Product_Code, Product_Name, CategoryName, ProductDescription, 
                         Quantity, Price, Subtotal, totalPrice, discount, grandTotal, 
-                        paymentMode, amountReceived, balance
+                        paymentMode, amountReceived, balance, finalTotalPrice
                     ) VALUES (
                         @OrderNo, @OrderDate, @OrderMonth, @OrderMonthYear,
                         @Product_Code, @Product_Name, @CategoryName, @ProductDescription, 
                         @Quantity, @Price, @Subtotal, @totalPrice, @discount, @grandTotal, 
-                        @paymentMode, @amountReceived, @balance
+                        @paymentMode, @amountReceived, @balance, @finalTotalPrice
                     )", conn)
                     cmd.Parameters.AddWithValue("@OrderNo", txt_OrderNo.Text)
                     cmd.Parameters.AddWithValue("@OrderDate", CDate(dtp_OrderDate.Text))
@@ -225,6 +225,7 @@ Public Class Cashier
                     cmd.Parameters.AddWithValue("@paymentMode", cbo_paymentMode.Text)
                     cmd.Parameters.AddWithValue("@amountReceived", CDec(txt_amountReceived.Text))
                     cmd.Parameters.AddWithValue("@balance", CDec(lbl_Change.Text))
+                    cmd.Parameters.AddWithValue("@finalTotalPrice", CDec(lbl_OverAllGrandTotal.Text))
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -278,5 +279,9 @@ Public Class Cashier
         Dim loginForm As New Login()
         loginForm.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class
