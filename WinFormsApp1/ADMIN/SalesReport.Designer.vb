@@ -23,7 +23,7 @@ Partial Class SalesReport
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesReport))
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
         AddCategory_lbl = New Label()
         Panel2 = New Panel()
         LOGOUT = New Label()
@@ -368,10 +368,10 @@ Partial Class SalesReport
         ' Column3
         ' 
         Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.Format = "d"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Column3.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Format = "d"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Column3.DefaultCellStyle = DataGridViewCellStyle5
         Column3.HeaderText = "Date"
         Column3.MinimumWidth = 6
         Column3.Name = "Column3"
@@ -416,7 +416,7 @@ Partial Class SalesReport
         DateTimePicker1.Margin = New Padding(0)
         DateTimePicker1.Name = "DateTimePicker1"
         DateTimePicker1.Size = New Size(137, 27)
-        DateTimePicker1.TabIndex = 32
+        DateTimePicker1.TabIndex = 33
         DateTimePicker1.Value = New Date(2025, 5, 5, 0, 0, 0, 0)
         ' 
         ' SalesReport
