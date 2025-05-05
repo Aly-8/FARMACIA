@@ -22,6 +22,7 @@ Partial Class Dashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Dashboard))
         Panel1 = New Panel()
         fdg = New PictureBox()
         Panel2 = New Panel()
@@ -83,13 +84,14 @@ Partial Class Dashboard
         ' 
         ' fdg
         ' 
-        fdg.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         fdg.BackgroundImageLayout = ImageLayout.None
+        fdg.Dock = DockStyle.Left
         fdg.ErrorImage = Nothing
-        fdg.Location = New Point(40, 7)
+        fdg.Image = CType(resources.GetObject("fdg.Image"), Image)
+        fdg.Location = New Point(0, 0)
         fdg.Name = "fdg"
-        fdg.Size = New Size(160, 59)
-        fdg.SizeMode = PictureBoxSizeMode.AutoSize
+        fdg.Size = New Size(278, 90)
+        fdg.SizeMode = PictureBoxSizeMode.Zoom
         fdg.TabIndex = 18
         fdg.TabStop = False
         ' 
@@ -513,7 +515,6 @@ Partial Class Dashboard
         StartPosition = FormStartPosition.CenterScreen
         Text = "Dashboard"
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()

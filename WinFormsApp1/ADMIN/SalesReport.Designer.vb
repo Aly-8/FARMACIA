@@ -88,7 +88,7 @@ Partial Class SalesReport
         ' 
         Label1.AutoSize = True
         Label1.FlatStyle = FlatStyle.Flat
-        Label1.Font = New Font("Microsoft Sans Serif", 12.0F)
+        Label1.Font = New Font("Microsoft Sans Serif", 12F)
         Label1.ForeColor = SystemColors.ButtonHighlight
         Label1.Location = New Point(1, 409)
         Label1.Name = "Label1"
@@ -186,15 +186,15 @@ Partial Class SalesReport
         ' 
         ' fdg
         ' 
-        fdg.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         fdg.BackgroundImageLayout = ImageLayout.None
+        fdg.Dock = DockStyle.Left
         fdg.ErrorImage = Nothing
         fdg.Image = CType(resources.GetObject("fdg.Image"), Image)
-        fdg.Location = New Point(40, 7)
+        fdg.Location = New Point(0, 0)
         fdg.Name = "fdg"
-        fdg.Size = New Size(160, 59)
-        fdg.SizeMode = PictureBoxSizeMode.AutoSize
-        fdg.TabIndex = 3
+        fdg.Size = New Size(278, 90)
+        fdg.SizeMode = PictureBoxSizeMode.Zoom
+        fdg.TabIndex = 19
         fdg.TabStop = False
         ' 
         ' Exit_btn
@@ -242,7 +242,7 @@ Partial Class SalesReport
         ' 
         ' SalesReport
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.InactiveCaption
         ClientSize = New Size(1500, 600)
@@ -258,7 +258,6 @@ Partial Class SalesReport
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
         TabControl1.ResumeLayout(False)
         ResumeLayout(False)

@@ -8,6 +8,7 @@ Public Class Cashier
         total()
         btn_Pay.Enabled = False
         load_discount()
+        txt_OrderNo.Text = GetOrderNo()
     End Sub
 
     Public Sub ADDLIST()
@@ -36,6 +37,7 @@ Public Class Cashier
                 If conn.State = ConnectionState.Closed Then
                     conn.Open()
                 End If
+
                 Using cmd As New MySqlCommand("SELECT * FROM `tblinventory` WHERE `ProductCode` = @ProductCode", conn)
                     cmd.Parameters.AddWithValue("@ProductCode", txt_SearchProductCode.Text.Trim())
                     Using dr As MySqlDataReader = cmd.ExecuteReader()
@@ -75,39 +77,31 @@ Public Class Cashier
     End Sub
 
     Private Sub txt_SearchProductCode_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_SearchProductCode.KeyDown
-        If txt_SearchProductCode.Text = Nothing Then
-        Else
-            If e.KeyCode = Keys.Enter Then
-                e.SuppressKeyPress = True
-                ADDLIST()
-
-                txt_SearchProductCode.Clear()
-                txt_SearchProductCode.Focus()
-            End If
-            Return
+        If Not String.IsNullOrEmpty(txt_SearchProductCode.Text) AndAlso e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            ADDLIST()
+            txt_SearchProductCode.Clear()
+            txt_SearchProductCode.Focus()
         End If
     End Sub
 
     Public Sub total()
-        lbl_noOfItems.Text = DataGridView1.Rows.Count - 1 + 1
+        lbl_noOfItems.Text = (DataGridView1.Rows.Count - 1 + 1).ToString()
 
-        Dim sum As Decimal = 0
         Dim subtotal As Decimal = 0
-        For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
-            sum = sum + DataGridView1.Rows(i).Cells(7).Value
-            subtotal = subtotal + DataGridView1.Rows(i).Cells(6).Value * DataGridView1.Rows(i).Cells(5).Value
+        For i As Integer = 0 To DataGridView1.Rows.Count - 1
+            subtotal += CDec(DataGridView1.Rows(i).Cells(6).Value) * CDec(DataGridView1.Rows(i).Cells(5).Value)
         Next
-        Try
-            lbl_subtotal.Text = Format(CDec(subtotal), "#,##0.00")
-            lbl_TotalPrice.Text = Format(CDec(subtotal), "#,##0.00")
-            lbl_Discount.Text = Format(CDec(txt_discount.Text * lbl_TotalPrice.Text / 100), "#,##0.00")
-            lbl_GrandTotal.Text = Format(CDec(lbl_TotalPrice.Text - lbl_Discount.Text), "#,##0.00")
 
-            lbl_OverAllGrandTotal.Text = Format(CDec(lbl_GrandTotal.Text), "#,##0.00")
+        lbl_subtotal.Text = Format(subtotal, "#,##0.00")
+        lbl_TotalPrice.Text = Format(subtotal, "#,##0.00")
 
-        Catch ex As Exception
+        Dim discount As Decimal = CDec(If(String.IsNullOrEmpty(txt_discount.Text), 0, txt_discount.Text)) * subtotal / 100
+        lbl_Discount.Text = Format(discount, "#,##0.00")
 
-        End Try
+        Dim grandTotal As Decimal = subtotal - discount
+        lbl_GrandTotal.Text = Format(grandTotal, "#,##0.00")
+        lbl_OverAllGrandTotal.Text = Format(grandTotal, "#,##0.00")
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -115,24 +109,11 @@ Public Class Cashier
     End Sub
 
     Private Sub txt_amountReceived_TextChanged(sender As Object, e As EventArgs) Handles txt_amountReceived.TextChanged
-        Dim amountReceived As Decimal = 0
-        Dim grandTotal As Decimal = 0
-
-        If Not String.IsNullOrEmpty(txt_amountReceived.Text) AndAlso Decimal.TryParse(txt_amountReceived.Text, amountReceived) Then
-        Else
-            amountReceived = 0
-        End If
-
-        If Not String.IsNullOrEmpty(lbl_GrandTotal.Text) AndAlso Decimal.TryParse(lbl_GrandTotal.Text, grandTotal) Then
-        Else
-            grandTotal = 0
-        End If
-
-        lbl_Change.Text = Format(amountReceived - grandTotal, "#,##0.00")
-
-        If String.IsNullOrEmpty(txt_amountReceived.Text) Then
+        Try
+            lbl_Change.Text = Format(CDec(txt_amountReceived.Text) - CDec(lbl_GrandTotal.Text), "#,##0.00")
+        Catch ex As Exception
             lbl_Change.Text = "0.00"
-        End If
+        End Try
 
         btn_Pay.Enabled = True
 
@@ -146,22 +127,19 @@ Public Class Cashier
                 conn.Open()
             End If
 
-            cmd = New MySqlCommand("SELECT `discount` FROM `tbldiscount` WHERE `discId` = @discId", conn)
-            cmd.Parameters.AddWithValue("@discId", "1001")
-
-            dr = cmd.ExecuteReader()
-            If dr.Read() Then
-                txt_discount.Text = dr("discount").ToString().Trim()
-            Else
-                MsgBox("No discount found for the given ID.", vbExclamation)
-            End If
-
+            Using cmd As New MySqlCommand("SELECT `discount` FROM `tbldiscount` WHERE `discId` = @discId", conn)
+                cmd.Parameters.AddWithValue("@discId", "1001")
+                Using dr As MySqlDataReader = cmd.ExecuteReader()
+                    If dr.Read() Then
+                        txt_discount.Text = dr("discount").ToString().Trim()
+                    Else
+                        MsgBox("No discount found for the given ID.", vbExclamation)
+                    End If
+                End Using
+            End Using
         Catch ex As Exception
             MsgBox("Error loading discount: " & ex.Message, vbCritical)
         Finally
-            If dr IsNot Nothing AndAlso Not dr.IsClosed Then
-                dr.Close()
-            End If
             If conn.State = ConnectionState.Open Then
                 conn.Close()
             End If
@@ -169,11 +147,136 @@ Public Class Cashier
     End Sub
 
 
-    Private Sub f3_setdiscount_Click(sender As Object, e As EventArgs) Handles f3_setdiscount.Click
-        Dim discountForm As New Discount()
-        discountForm.ShowDialog()
 
-        load_discount()
+    Private Sub f3_setdiscount_Click(sender As Object, e As EventArgs) Handles f3_setdiscount.Click
+        ' Create an instance of the Discount form
+        Dim discountForm As New Discount()
+
+        ' Subscribe to the DiscountUpdated event
+        AddHandler discountForm.DiscountUpdated, AddressOf UpdateDiscountInCashier
+
+        ' Show the Discount form
+        discountForm.Show()
     End Sub
 
+    Private Sub UpdateDiscountInCashier(newDiscount As Decimal)
+        ' Update the discount textbox
+        txt_discount.Text = newDiscount.ToString("#,##0.00")
+
+        ' Recalculate totals to reflect the new discount
+        total()
+    End Sub
+
+
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        lbl_time.Text = Date.Now.ToString("hh:mm:ss tt")
+        lbl_date.Text = Date.Now.ToString("dd-MMMM-yyyy dddd")
+
+    End Sub
+
+    Private Sub lbl_time_Click(sender As Object, e As EventArgs) Handles lbl_time.Click
+
+    End Sub
+
+    Sub Save_Order()
+        If cbo_paymentMode.Text = String.Empty Then
+            MsgBox("Please Select a Payment Mode.", vbInformation)
+            Return
+        ElseIf txt_amountReceived.Text = String.Empty Then
+            MsgBox("Please Enter Amount Received.", vbInformation)
+            Return
+        ElseIf Val(lbl_GrandTotal.Text) > Val(txt_amountReceived.Text) Then
+            MsgBox("Insufficient Amount Received!", vbInformation)
+            Return
+        End If
+
+        Try
+            conn.Open()
+            For j As Integer = 0 To DataGridView1.Rows.Count - 1
+                Using cmd As New MySqlCommand("
+                    INSERT INTO tblpos (
+                        OrderNo, OrderDate, OrderMonth, OrderMonthYear,
+                        Product_Code, Product_Name, CategoryName, ProductDescription, 
+                        Quantity, Price, Subtotal, totalPrice, discount, grandTotal, 
+                        paymentMode, amountReceived, balance
+                    ) VALUES (
+                        @OrderNo, @OrderDate, @OrderMonth, @OrderMonthYear,
+                        @Product_Code, @Product_Name, @CategoryName, @ProductDescription, 
+                        @Quantity, @Price, @Subtotal, @totalPrice, @discount, @grandTotal, 
+                        @paymentMode, @amountReceived, @balance
+                    )", conn)
+                    cmd.Parameters.AddWithValue("@OrderNo", txt_OrderNo.Text)
+                    cmd.Parameters.AddWithValue("@OrderDate", CDate(dtp_OrderDate.Text))
+                    cmd.Parameters.AddWithValue("@OrderMonth", Date.Now.ToString("MM"))
+                    cmd.Parameters.AddWithValue("@OrderMonthYear", Date.Now.ToString("MMMM-yyyy"))
+
+                    cmd.Parameters.AddWithValue("@Product_Code", DataGridView1.Rows(j).Cells(1).Value)
+                    cmd.Parameters.AddWithValue("@Product_Name", DataGridView1.Rows(j).Cells(2).Value)
+                    cmd.Parameters.AddWithValue("@CategoryName", DataGridView1.Rows(j).Cells(3).Value)
+                    cmd.Parameters.AddWithValue("@ProductDescription", DataGridView1.Rows(j).Cells(4).Value)
+                    cmd.Parameters.AddWithValue("@Quantity", DataGridView1.Rows(j).Cells(5).Value)
+                    cmd.Parameters.AddWithValue("@Price", DataGridView1.Rows(j).Cells(6).Value)
+                    cmd.Parameters.AddWithValue("@totalPrice", DataGridView1.Rows(j).Cells(7).Value)
+
+                    cmd.Parameters.AddWithValue("@Subtotal", CDec(lbl_subtotal.Text))
+                    cmd.Parameters.AddWithValue("@discount", CDec(lbl_Discount.Text))
+                    cmd.Parameters.AddWithValue("@grandTotal", CDec(lbl_GrandTotal.Text))
+                    cmd.Parameters.AddWithValue("@paymentMode", cbo_paymentMode.Text)
+                    cmd.Parameters.AddWithValue("@amountReceived", CDec(txt_amountReceived.Text))
+                    cmd.Parameters.AddWithValue("@balance", CDec(lbl_Change.Text))
+
+                    cmd.ExecuteNonQuery()
+                End Using
+            Next
+            MsgBox("Transaction Saved Successfully!" & vbCrLf & "Order No: " & txt_OrderNo.Text, vbInformation)
+            clear()
+        Catch ex As Exception
+            MsgBox("Error saving transaction: " & ex.Message, vbCritical)
+        Finally
+            If conn.State = ConnectionState.Open Then conn.Close()
+        End Try
+
+        txt_OrderNo.Text = GetOrderNo()
+    End Sub
+
+    Sub clear()
+        txt_SearchProductCode.Clear()
+        dtp_OrderDate.Text = Now
+        txt_SearchProductCode.Clear()
+        DataGridView1.Rows.Clear()
+        lbl_Change.Text = "0.00"
+        lbl_Discount.Text = "0.00"
+        lbl_GrandTotal.Text = "0.00"
+        lbl_noOfItems.Text = "0"
+        lbl_OverAllGrandTotal.Text = "0.00"
+        lbl_subtotal.Text = "0.00"
+        lbl_TotalPrice.Text = "0.00"
+        cbo_paymentMode.SelectedIndex = -1
+        txt_amountReceived.Clear()
+    End Sub
+    Private Sub btn_Pay_Click(sender As Object, e As EventArgs) Handles btn_Pay.Click
+        Save_Order()
+        txt_SearchProductCode.Focus()
+    End Sub
+
+    Private Sub F1_New_Click(sender As Object, e As EventArgs) Handles F1_New.Click
+        clear()
+        txt_OrderNo.Text = GetOrderNo()
+    End Sub
+
+    Private Sub f5_remove_Click(sender As Object, e As EventArgs) Handles f5_remove.Click
+        If DataGridView1.SelectedRows.Count > 0 Then
+            DataGridView1.Rows.Remove(DataGridView1.SelectedRows(0))
+        End If
+    End Sub
+
+    Private Sub f6_changepassword_Click(sender As Object, e As EventArgs) Handles f6_changepassword.Click
+        ChangePassword.ShowDialog()
+    End Sub
+    Private Sub f7_logout_Click(sender As Object, e As EventArgs) Handles f7_logout.Click
+        Dim loginForm As New Login()
+        loginForm.Show()
+        Me.Hide()
+    End Sub
 End Class

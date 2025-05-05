@@ -22,9 +22,10 @@ Partial Class User
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(User))
         Panel1 = New Panel()
-        Exit_btn = New Button()
         fdg = New PictureBox()
+        Exit_btn = New Button()
         Panel3 = New Panel()
         add_btn = New Button()
         Label6 = New Label()
@@ -37,10 +38,10 @@ Partial Class User
         Panel4 = New Panel()
         Logout_btn = New Button()
         Label1 = New Label()
-        Button6 = New Button()
-        Button7 = New Button()
-        Button8 = New Button()
-        additem_btn = New Button()
+        btn_user = New Button()
+        btn_SalesReport = New Button()
+        btn_Categories = New Button()
+        stock_btn = New Button()
         Inventory_btn = New Button()
         Dashboard_btn = New Button()
         Panel1.SuspendLayout()
@@ -52,12 +53,25 @@ Partial Class User
         ' Panel1
         ' 
         Panel1.BackColor = SystemColors.ActiveCaption
-        Panel1.Controls.Add(Exit_btn)
         Panel1.Controls.Add(fdg)
+        Panel1.Controls.Add(Exit_btn)
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1500, 90)
         Panel1.TabIndex = 10
+        ' 
+        ' fdg
+        ' 
+        fdg.BackgroundImageLayout = ImageLayout.None
+        fdg.Dock = DockStyle.Left
+        fdg.ErrorImage = Nothing
+        fdg.Image = CType(resources.GetObject("fdg.Image"), Image)
+        fdg.Location = New Point(0, 0)
+        fdg.Name = "fdg"
+        fdg.Size = New Size(278, 90)
+        fdg.SizeMode = PictureBoxSizeMode.Zoom
+        fdg.TabIndex = 19
+        fdg.TabStop = False
         ' 
         ' Exit_btn
         ' 
@@ -71,18 +85,6 @@ Partial Class User
         Exit_btn.TabIndex = 2
         Exit_btn.Text = "X"
         Exit_btn.UseVisualStyleBackColor = False
-        ' 
-        ' fdg
-        ' 
-        fdg.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        fdg.BackgroundImageLayout = ImageLayout.None
-        fdg.ErrorImage = Nothing
-        fdg.Location = New Point(40, 7)
-        fdg.Name = "fdg"
-        fdg.Size = New Size(160, 59)
-        fdg.SizeMode = PictureBoxSizeMode.AutoSize
-        fdg.TabIndex = 0
-        fdg.TabStop = False
         ' 
         ' Panel3
         ' 
@@ -107,7 +109,7 @@ Partial Class User
         add_btn.FlatStyle = FlatStyle.Flat
         add_btn.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         add_btn.ForeColor = Color.Snow
-        add_btn.Location = New Point(545, 334)
+        add_btn.Location = New Point(546, 348)
         add_btn.Name = "add_btn"
         add_btn.Size = New Size(116, 35)
         add_btn.TabIndex = 8
@@ -119,7 +121,7 @@ Partial Class User
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label6.ForeColor = Color.DarkCyan
-        Label6.Location = New Point(335, 283)
+        Label6.Location = New Point(293, 272)
         Label6.Name = "Label6"
         Label6.Size = New Size(89, 20)
         Label6.TabIndex = 7
@@ -130,7 +132,7 @@ Partial Class User
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label5.ForeColor = Color.DarkCyan
-        Label5.Location = New Point(335, 228)
+        Label5.Location = New Point(293, 217)
         Label5.Name = "Label5"
         Label5.Size = New Size(95, 20)
         Label5.TabIndex = 6
@@ -139,9 +141,9 @@ Partial Class User
         ' cbo_usertype
         ' 
         cbo_usertype.Items.AddRange(New Object() {"ADMIN", "CASHIER"})
-        cbo_usertype.Location = New Point(460, 280)
+        cbo_usertype.Location = New Point(418, 269)
         cbo_usertype.Name = "cbo_usertype"
-        cbo_usertype.Size = New Size(310, 28)
+        cbo_usertype.Size = New Size(401, 28)
         cbo_usertype.TabIndex = 0
         ' 
         ' Label4
@@ -149,7 +151,7 @@ Partial Class User
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = Color.DarkCyan
-        Label4.Location = New Point(335, 172)
+        Label4.Location = New Point(293, 161)
         Label4.Name = "Label4"
         Label4.Size = New Size(95, 20)
         Label4.TabIndex = 5
@@ -157,17 +159,17 @@ Partial Class User
         ' 
         ' Txt_Password
         ' 
-        Txt_Password.Location = New Point(460, 226)
+        Txt_Password.Location = New Point(418, 215)
         Txt_Password.Name = "Txt_Password"
         Txt_Password.PasswordChar = "•"c
-        Txt_Password.Size = New Size(310, 27)
+        Txt_Password.Size = New Size(401, 27)
         Txt_Password.TabIndex = 2
         ' 
         ' Txt_Username
         ' 
-        Txt_Username.Location = New Point(460, 169)
+        Txt_Username.Location = New Point(418, 158)
         Txt_Username.Name = "Txt_Username"
-        Txt_Username.Size = New Size(310, 27)
+        Txt_Username.Size = New Size(401, 27)
         Txt_Username.TabIndex = 1
         ' 
         ' Label2
@@ -175,7 +177,7 @@ Partial Class User
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.DarkCyan
-        Label2.Location = New Point(364, 43)
+        Label2.Location = New Point(403, 52)
         Label2.Name = "Label2"
         Label2.Size = New Size(392, 50)
         Label2.TabIndex = 0
@@ -186,10 +188,10 @@ Partial Class User
         Panel4.BackColor = Color.CadetBlue
         Panel4.Controls.Add(Logout_btn)
         Panel4.Controls.Add(Label1)
-        Panel4.Controls.Add(Button6)
-        Panel4.Controls.Add(Button7)
-        Panel4.Controls.Add(Button8)
-        Panel4.Controls.Add(additem_btn)
+        Panel4.Controls.Add(btn_user)
+        Panel4.Controls.Add(btn_SalesReport)
+        Panel4.Controls.Add(btn_Categories)
+        Panel4.Controls.Add(stock_btn)
         Panel4.Controls.Add(Inventory_btn)
         Panel4.Controls.Add(Dashboard_btn)
         Panel4.Location = New Point(0, 89)
@@ -222,57 +224,57 @@ Partial Class User
         Label1.TabIndex = 8
         Label1.Text = "________________________"
         ' 
-        ' Button6
+        ' btn_user
         ' 
-        Button6.FlatAppearance.BorderColor = Color.Teal
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button6.ForeColor = Color.Snow
-        Button6.Location = New Point(24, 371)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(226, 37)
-        Button6.TabIndex = 7
-        Button6.Text = "USER"
-        Button6.UseVisualStyleBackColor = True
+        btn_user.FlatAppearance.BorderColor = Color.Teal
+        btn_user.FlatStyle = FlatStyle.Flat
+        btn_user.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_user.ForeColor = Color.Snow
+        btn_user.Location = New Point(24, 371)
+        btn_user.Name = "btn_user"
+        btn_user.Size = New Size(226, 37)
+        btn_user.TabIndex = 7
+        btn_user.Text = "USER"
+        btn_user.UseVisualStyleBackColor = True
         ' 
-        ' Button7
+        ' btn_SalesReport
         ' 
-        Button7.FlatAppearance.BorderColor = Color.Teal
-        Button7.FlatStyle = FlatStyle.Flat
-        Button7.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button7.ForeColor = Color.Snow
-        Button7.Location = New Point(24, 317)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(226, 37)
-        Button7.TabIndex = 6
-        Button7.Text = "SALES REPORT"
-        Button7.UseVisualStyleBackColor = True
+        btn_SalesReport.FlatAppearance.BorderColor = Color.Teal
+        btn_SalesReport.FlatStyle = FlatStyle.Flat
+        btn_SalesReport.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_SalesReport.ForeColor = Color.Snow
+        btn_SalesReport.Location = New Point(24, 317)
+        btn_SalesReport.Name = "btn_SalesReport"
+        btn_SalesReport.Size = New Size(226, 37)
+        btn_SalesReport.TabIndex = 6
+        btn_SalesReport.Text = "SALES REPORT"
+        btn_SalesReport.UseVisualStyleBackColor = True
         ' 
-        ' Button8
+        ' btn_Categories
         ' 
-        Button8.FlatAppearance.BorderColor = Color.Teal
-        Button8.FlatStyle = FlatStyle.Flat
-        Button8.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button8.ForeColor = Color.Snow
-        Button8.Location = New Point(24, 263)
-        Button8.Name = "Button8"
-        Button8.Size = New Size(226, 37)
-        Button8.TabIndex = 5
-        Button8.Text = "CATEGORIES"
-        Button8.UseVisualStyleBackColor = True
+        btn_Categories.FlatAppearance.BorderColor = Color.Teal
+        btn_Categories.FlatStyle = FlatStyle.Flat
+        btn_Categories.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_Categories.ForeColor = Color.Snow
+        btn_Categories.Location = New Point(24, 263)
+        btn_Categories.Name = "btn_Categories"
+        btn_Categories.Size = New Size(226, 37)
+        btn_Categories.TabIndex = 5
+        btn_Categories.Text = "CATEGORIES"
+        btn_Categories.UseVisualStyleBackColor = True
         ' 
-        ' additem_btn
+        ' stock_btn
         ' 
-        additem_btn.FlatAppearance.BorderColor = Color.Teal
-        additem_btn.FlatStyle = FlatStyle.Flat
-        additem_btn.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        additem_btn.ForeColor = Color.Snow
-        additem_btn.Location = New Point(24, 207)
-        additem_btn.Name = "additem_btn"
-        additem_btn.Size = New Size(226, 37)
-        additem_btn.TabIndex = 4
-        additem_btn.Text = "STOCK"
-        additem_btn.UseVisualStyleBackColor = True
+        stock_btn.FlatAppearance.BorderColor = Color.Teal
+        stock_btn.FlatStyle = FlatStyle.Flat
+        stock_btn.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        stock_btn.ForeColor = Color.Snow
+        stock_btn.Location = New Point(24, 207)
+        stock_btn.Name = "stock_btn"
+        stock_btn.Size = New Size(226, 37)
+        stock_btn.TabIndex = 4
+        stock_btn.Text = "STOCK"
+        stock_btn.UseVisualStyleBackColor = True
         ' 
         ' Inventory_btn
         ' 
@@ -318,7 +320,6 @@ Partial Class User
         StartPosition = FormStartPosition.CenterScreen
         Text = "User"
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
@@ -328,7 +329,6 @@ Partial Class User
     End Sub
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Exit_btn As Button
-    Friend WithEvents fdg As PictureBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
@@ -341,10 +341,11 @@ Partial Class User
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Logout_btn As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents additem_btn As Button
+    Friend WithEvents btn_user As Button
+    Friend WithEvents btn_SalesReport As Button
+    Friend WithEvents btn_Categories As Button
+    Friend WithEvents stock_btn As Button
     Friend WithEvents Inventory_btn As Button
     Friend WithEvents Dashboard_btn As Button
+    Friend WithEvents fdg As PictureBox
 End Class

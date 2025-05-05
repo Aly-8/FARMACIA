@@ -73,12 +73,6 @@ Public Class Categories 'frm_addgroup
         End Try
     End Sub
 
-    Private Sub additem_btn_Click_1(sender As Object, e As EventArgs) Handles additem_btn.Click
-        Dim AddItem As New Stock()
-        AddItem.Show()
-        Me.Hide()
-    End Sub
-
     Private Sub Inventory_btn_Click_1(sender As Object, e As EventArgs) Handles Inventory_btn.Click
         Dim Inventory As New Inventory()
         Inventory.Show()
@@ -149,4 +143,33 @@ Public Class Categories 'frm_addgroup
         End If
     End Sub
 
+
+    Private Sub btn_Stock_Click(sender As Object, e As EventArgs) Handles btn_Stock.Click
+        Dim AddItem As New Stock()
+        AddItem.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub btn_Categories_Click(sender As Object, e As EventArgs) Handles btn_Categories.Click
+        Dim Categories As New Categories()
+        Categories.Show()
+        Me.Hide()
+    End Sub
+
+
+    Private Sub btn_User_Click(sender As Object, e As EventArgs) Handles btn_User.Click
+        Dim User As New User()
+        User.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub salesreport_btn_Click(sender As Object, e As EventArgs) Handles salesreport_btn.Click
+        Dim SalesReport As New SalesReport()
+        SalesReport.Show()
+        Me.Hide()
+    End Sub
 End Class

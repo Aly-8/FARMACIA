@@ -53,7 +53,7 @@ Partial Class Login
         ' 
         fdg.BackgroundImageLayout = ImageLayout.None
         fdg.ErrorImage = Nothing
-        fdg.Location = New Point(14, -3)
+        fdg.Location = New Point(12, 0)
         fdg.Name = "fdg"
         fdg.Size = New Size(100, 85)
         fdg.TabIndex = 5

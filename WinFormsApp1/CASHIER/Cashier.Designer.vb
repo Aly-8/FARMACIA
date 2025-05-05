@@ -25,11 +25,11 @@ Partial Class Cashier
         components = New ComponentModel.Container()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
-        Label4 = New Label()
-        Label3 = New Label()
+        lbl_time = New Label()
         Label1 = New Label()
         Label2 = New Label()
         Panel2 = New Panel()
+        lbl_date = New Label()
         dtp_OrderDate = New DateTimePicker()
         txt_SearchProductCode = New TextBox()
         txt_OrderNo = New TextBox()
@@ -74,6 +74,7 @@ Partial Class Cashier
         Column5 = New DataGridViewTextBoxColumn()
         Column8 = New DataGridViewTextBoxColumn()
         Timer1 = New Timer(components)
+        Timer2 = New Timer(components)
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
@@ -83,8 +84,7 @@ Partial Class Cashier
         ' 
         ' Panel1
         ' 
-        Panel1.Controls.Add(Label4)
-        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(lbl_time)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(Label2)
         Panel1.Dock = DockStyle.Top
@@ -93,25 +93,17 @@ Partial Class Cashier
         Panel1.Size = New Size(1271, 64)
         Panel1.TabIndex = 1
         ' 
-        ' Label4
+        ' lbl_time
         ' 
-        Label4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Label4.AutoSize = True
-        Label4.Location = New Point(623, 28)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(128, 20)
-        Label4.TabIndex = 12
-        Label4.Text = "Inventory System"
-        ' 
-        ' Label3
-        ' 
-        Label3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Label3.AutoSize = True
-        Label3.Location = New Point(623, 8)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(128, 20)
-        Label3.TabIndex = 11
-        Label3.Text = "Inventory System"
+        lbl_time.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lbl_time.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lbl_time.ForeColor = Color.MidnightBlue
+        lbl_time.Location = New Point(933, 6)
+        lbl_time.Name = "lbl_time"
+        lbl_time.Size = New Size(326, 48)
+        lbl_time.TabIndex = 37
+        lbl_time.Text = "00.00"
+        lbl_time.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' Label1
         ' 
@@ -136,6 +128,7 @@ Partial Class Cashier
         ' Panel2
         ' 
         Panel2.BackColor = Color.LightSteelBlue
+        Panel2.Controls.Add(lbl_date)
         Panel2.Controls.Add(dtp_OrderDate)
         Panel2.Controls.Add(txt_SearchProductCode)
         Panel2.Controls.Add(txt_OrderNo)
@@ -147,6 +140,18 @@ Partial Class Cashier
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1271, 70)
         Panel2.TabIndex = 2
+        ' 
+        ' lbl_date
+        ' 
+        lbl_date.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lbl_date.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lbl_date.ForeColor = Color.MidnightBlue
+        lbl_date.Location = New Point(933, 3)
+        lbl_date.Name = "lbl_date"
+        lbl_date.Size = New Size(326, 31)
+        lbl_date.TabIndex = 37
+        lbl_date.Text = "00.00"
+        lbl_date.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' dtp_OrderDate
         ' 
@@ -503,9 +508,11 @@ Partial Class Cashier
         ' txt_discount
         ' 
         txt_discount.Anchor = AnchorStyles.Right
-        txt_discount.Location = New Point(121, 167)
+        txt_discount.BorderStyle = BorderStyle.None
+        txt_discount.Location = New Point(121, 170)
         txt_discount.Name = "txt_discount"
-        txt_discount.Size = New Size(48, 27)
+        txt_discount.ReadOnly = True
+        txt_discount.Size = New Size(48, 20)
         txt_discount.TabIndex = 19
         ' 
         ' Label11
@@ -543,7 +550,7 @@ Partial Class Cashier
         lbl_OverAllGrandTotal.Anchor = AnchorStyles.Right
         lbl_OverAllGrandTotal.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_OverAllGrandTotal.ForeColor = Color.Teal
-        lbl_OverAllGrandTotal.Location = New Point(20, 5)
+        lbl_OverAllGrandTotal.Location = New Point(11, 3)
         lbl_OverAllGrandTotal.Name = "lbl_OverAllGrandTotal"
         lbl_OverAllGrandTotal.Size = New Size(326, 38)
         lbl_OverAllGrandTotal.TabIndex = 7
@@ -651,6 +658,10 @@ Partial Class Cashier
         ' 
         Timer1.Enabled = True
         ' 
+        ' Timer2
+        ' 
+        Timer2.Enabled = True
+        ' 
         ' Cashier
         ' 
         AutoScaleDimensions = New SizeF(9F, 20F)
@@ -686,8 +697,6 @@ Partial Class Cashier
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents txt_OrderNo As TextBox
@@ -729,4 +738,7 @@ Partial Class Cashier
     Friend WithEvents Timer1 As Timer
     Friend WithEvents lbl_subtotal As Label
     Friend WithEvents Label16 As Label
+    Friend WithEvents lbl_time As Label
+    Friend WithEvents lbl_date As Label
+    Friend WithEvents Timer2 As Timer
 End Class

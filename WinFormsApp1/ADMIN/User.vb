@@ -57,4 +57,40 @@ Public Class User
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
 
     End Sub
+
+    Private Sub Dashboard_btn_Click(sender As Object, e As EventArgs) Handles Dashboard_btn.Click
+        Dim Dashboard As New Dashboard()
+        Dashboard.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Inventory_btn_Click(sender As Object, e As EventArgs) Handles Inventory_btn.Click
+        Dim Inventory As New Inventory()
+        Inventory.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub stock_btn_Click(sender As Object, e As EventArgs) Handles stock_btn.Click
+        Dim AddItem As New Stock()
+        AddItem.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub btn_Categories_Click(sender As Object, e As EventArgs) Handles btn_Categories.Click
+        Dim Categories As New Categories()
+        Categories.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub btn_SalesReport_Click(sender As Object, e As EventArgs) Handles btn_SalesReport.Click
+        Dim SalesReport As New SalesReport()
+        SalesReport.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub btn_user_Click(sender As Object, e As EventArgs) Handles btn_user.Click
+        Dim User As New User()
+        User.Show()
+        Me.Hide()
+    End Sub
 End Class

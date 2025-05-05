@@ -22,6 +22,7 @@ Partial Class Stock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Stock))
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Exit_btn = New Button()
         Panel1 = New Panel()
@@ -37,11 +38,6 @@ Partial Class Stock
         Dashboard_btn = New Button()
         AddItem_bttn = New Button()
         DataGridView1 = New DataGridView()
-        txt_Search = New TextBox()
-        Label2 = New Label()
-        AddCategory_lbl = New Label()
-        UpdateStock_btn = New Button()
-        Label3 = New Label()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
@@ -50,6 +46,11 @@ Partial Class Stock
         Column6 = New DataGridViewTextBoxColumn()
         Column7 = New DataGridViewTextBoxColumn()
         Column9 = New DataGridViewTextBoxColumn()
+        txt_Search = New TextBox()
+        Label2 = New Label()
+        AddCategory_lbl = New Label()
+        UpdateStock_btn = New Button()
+        Label3 = New Label()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
@@ -81,14 +82,15 @@ Partial Class Stock
         ' 
         ' fdg
         ' 
-        fdg.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         fdg.BackgroundImageLayout = ImageLayout.None
+        fdg.Dock = DockStyle.Left
         fdg.ErrorImage = Nothing
-        fdg.Location = New Point(40, 7)
+        fdg.Image = CType(resources.GetObject("fdg.Image"), Image)
+        fdg.Location = New Point(0, 0)
         fdg.Name = "fdg"
-        fdg.Size = New Size(160, 59)
-        fdg.SizeMode = PictureBoxSizeMode.AutoSize
-        fdg.TabIndex = 21
+        fdg.Size = New Size(278, 90)
+        fdg.SizeMode = PictureBoxSizeMode.Zoom
+        fdg.TabIndex = 19
         fdg.TabStop = False
         ' 
         ' Panel2
@@ -246,60 +248,6 @@ Partial Class Stock
         DataGridView1.Size = New Size(1195, 343)
         DataGridView1.TabIndex = 21
         ' 
-        ' txt_Search
-        ' 
-        txt_Search.Location = New Point(370, 156)
-        txt_Search.Name = "txt_Search"
-        txt_Search.Size = New Size(366, 27)
-        txt_Search.TabIndex = 27
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Century Schoolbook", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.Teal
-        Label2.Location = New Point(297, 158)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(67, 19)
-        Label2.TabIndex = 26
-        Label2.Text = "Search "
-        ' 
-        ' AddCategory_lbl
-        ' 
-        AddCategory_lbl.AutoSize = True
-        AddCategory_lbl.Font = New Font("Palatino Linotype", 25.8F, FontStyle.Bold)
-        AddCategory_lbl.ForeColor = Color.Teal
-        AddCategory_lbl.Location = New Point(794, 93)
-        AddCategory_lbl.Name = "AddCategory_lbl"
-        AddCategory_lbl.Size = New Size(180, 58)
-        AddCategory_lbl.TabIndex = 28
-        AddCategory_lbl.Text = "STOCK"
-        ' 
-        ' UpdateStock_btn
-        ' 
-        UpdateStock_btn.BackColor = Color.DarkCyan
-        UpdateStock_btn.FlatAppearance.BorderSize = 0
-        UpdateStock_btn.FlatStyle = FlatStyle.Popup
-        UpdateStock_btn.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        UpdateStock_btn.ForeColor = SystemColors.ButtonHighlight
-        UpdateStock_btn.Location = New Point(1345, 156)
-        UpdateStock_btn.Name = "UpdateStock_btn"
-        UpdateStock_btn.Size = New Size(142, 31)
-        UpdateStock_btn.TabIndex = 29
-        UpdateStock_btn.Text = "UPDATE STOCK"
-        UpdateStock_btn.UseVisualStyleBackColor = False
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        Label3.ForeColor = Color.IndianRed
-        Label3.Location = New Point(811, 561)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(677, 20)
-        Label3.TabIndex = 30
-        Label3.Text = "NOTE: Do not leave the stock blank, as it will invalidate the data you inserted when updating."
-        ' 
         ' Column1
         ' 
         Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -374,6 +322,60 @@ Partial Class Stock
         Column9.Name = "Column9"
         Column9.Width = 125
         ' 
+        ' txt_Search
+        ' 
+        txt_Search.Location = New Point(370, 156)
+        txt_Search.Name = "txt_Search"
+        txt_Search.Size = New Size(366, 27)
+        txt_Search.TabIndex = 27
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Century Schoolbook", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.Teal
+        Label2.Location = New Point(297, 158)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(67, 19)
+        Label2.TabIndex = 26
+        Label2.Text = "Search "
+        ' 
+        ' AddCategory_lbl
+        ' 
+        AddCategory_lbl.AutoSize = True
+        AddCategory_lbl.Font = New Font("Palatino Linotype", 25.8F, FontStyle.Bold)
+        AddCategory_lbl.ForeColor = Color.Teal
+        AddCategory_lbl.Location = New Point(794, 93)
+        AddCategory_lbl.Name = "AddCategory_lbl"
+        AddCategory_lbl.Size = New Size(180, 58)
+        AddCategory_lbl.TabIndex = 28
+        AddCategory_lbl.Text = "STOCK"
+        ' 
+        ' UpdateStock_btn
+        ' 
+        UpdateStock_btn.BackColor = Color.DarkCyan
+        UpdateStock_btn.FlatAppearance.BorderSize = 0
+        UpdateStock_btn.FlatStyle = FlatStyle.Popup
+        UpdateStock_btn.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        UpdateStock_btn.ForeColor = SystemColors.ButtonHighlight
+        UpdateStock_btn.Location = New Point(1345, 156)
+        UpdateStock_btn.Name = "UpdateStock_btn"
+        UpdateStock_btn.Size = New Size(142, 31)
+        UpdateStock_btn.TabIndex = 29
+        UpdateStock_btn.Text = "UPDATE STOCK"
+        UpdateStock_btn.UseVisualStyleBackColor = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label3.ForeColor = Color.IndianRed
+        Label3.Location = New Point(811, 561)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(677, 20)
+        Label3.TabIndex = 30
+        Label3.Text = "NOTE: Do not leave the stock blank, as it will invalidate the data you inserted when updating."
+        ' 
         ' Stock
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -395,7 +397,6 @@ Partial Class Stock
         StartPosition = FormStartPosition.CenterScreen
         Text = "AddItem"
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
@@ -415,7 +416,6 @@ Partial Class Stock
     Friend WithEvents inventory_btn As Button
     Friend WithEvents Dashboard_btn As Button
     Friend WithEvents AddItem_bttn As Button
-    Friend WithEvents fdg As PictureBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents txt_Search As TextBox
     Friend WithEvents Label2 As Label
@@ -431,4 +431,5 @@ Partial Class Stock
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents fdg As PictureBox
 End Class

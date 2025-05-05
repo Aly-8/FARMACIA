@@ -22,6 +22,7 @@ Partial Class Inventory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Inventory))
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         fdg = New PictureBox()
@@ -64,12 +65,13 @@ Partial Class Inventory
         Panel4 = New Panel()
         Logout_btn = New Button()
         Label3 = New Label()
-        Button6 = New Button()
-        Button7 = New Button()
+        btn_User = New Button()
+        btn_SalesReport = New Button()
         categories_btn = New Button()
         stock_btn = New Button()
         Inventory_btn = New Button()
         Dashboard_btn = New Button()
+        Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
@@ -82,6 +84,7 @@ Partial Class Inventory
         ' Panel1
         ' 
         Panel1.BackColor = SystemColors.ActiveCaption
+        Panel1.Controls.Add(fdg)
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1500, 90)
@@ -89,15 +92,15 @@ Partial Class Inventory
         ' 
         ' fdg
         ' 
-        fdg.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        fdg.BackColor = SystemColors.ActiveCaption
         fdg.BackgroundImageLayout = ImageLayout.None
+        fdg.Dock = DockStyle.Left
         fdg.ErrorImage = Nothing
-        fdg.Location = New Point(40, 7)
+        fdg.Image = CType(resources.GetObject("fdg.Image"), Image)
+        fdg.Location = New Point(0, 0)
         fdg.Name = "fdg"
-        fdg.Size = New Size(160, 59)
-        fdg.SizeMode = PictureBoxSizeMode.AutoSize
-        fdg.TabIndex = 10
+        fdg.Size = New Size(278, 90)
+        fdg.SizeMode = PictureBoxSizeMode.Zoom
+        fdg.TabIndex = 19
         fdg.TabStop = False
         ' 
         ' TabControl1
@@ -505,8 +508,8 @@ Partial Class Inventory
         Panel4.BackColor = Color.CadetBlue
         Panel4.Controls.Add(Logout_btn)
         Panel4.Controls.Add(Label3)
-        Panel4.Controls.Add(Button6)
-        Panel4.Controls.Add(Button7)
+        Panel4.Controls.Add(btn_User)
+        Panel4.Controls.Add(btn_SalesReport)
         Panel4.Controls.Add(categories_btn)
         Panel4.Controls.Add(stock_btn)
         Panel4.Controls.Add(Inventory_btn)
@@ -541,31 +544,31 @@ Partial Class Inventory
         Label3.TabIndex = 8
         Label3.Text = "________________________"
         ' 
-        ' Button6
+        ' btn_User
         ' 
-        Button6.FlatAppearance.BorderColor = Color.Teal
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button6.ForeColor = Color.Snow
-        Button6.Location = New Point(24, 371)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(226, 37)
-        Button6.TabIndex = 7
-        Button6.Text = "USER"
-        Button6.UseVisualStyleBackColor = True
+        btn_User.FlatAppearance.BorderColor = Color.Teal
+        btn_User.FlatStyle = FlatStyle.Flat
+        btn_User.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_User.ForeColor = Color.Snow
+        btn_User.Location = New Point(24, 371)
+        btn_User.Name = "btn_User"
+        btn_User.Size = New Size(226, 37)
+        btn_User.TabIndex = 7
+        btn_User.Text = "USER"
+        btn_User.UseVisualStyleBackColor = True
         ' 
-        ' Button7
+        ' btn_SalesReport
         ' 
-        Button7.FlatAppearance.BorderColor = Color.Teal
-        Button7.FlatStyle = FlatStyle.Flat
-        Button7.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button7.ForeColor = Color.Snow
-        Button7.Location = New Point(24, 317)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(226, 37)
-        Button7.TabIndex = 6
-        Button7.Text = "SALES REPORT"
-        Button7.UseVisualStyleBackColor = True
+        btn_SalesReport.FlatAppearance.BorderColor = Color.Teal
+        btn_SalesReport.FlatStyle = FlatStyle.Flat
+        btn_SalesReport.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_SalesReport.ForeColor = Color.Snow
+        btn_SalesReport.Location = New Point(24, 317)
+        btn_SalesReport.Name = "btn_SalesReport"
+        btn_SalesReport.Size = New Size(226, 37)
+        btn_SalesReport.TabIndex = 6
+        btn_SalesReport.Text = "SALES REPORT"
+        btn_SalesReport.UseVisualStyleBackColor = True
         ' 
         ' categories_btn
         ' 
@@ -631,12 +634,12 @@ Partial Class Inventory
         ControlBox = False
         Controls.Add(Panel4)
         Controls.Add(TabControl1)
-        Controls.Add(fdg)
         Controls.Add(Panel1)
         FormBorderStyle = FormBorderStyle.None
         Name = "Inventory"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Inventory"
+        Panel1.ResumeLayout(False)
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
         TabControl1.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
@@ -648,11 +651,9 @@ Partial Class Inventory
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents fdg As PictureBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents DataGridView1 As DataGridView
@@ -679,8 +680,8 @@ Partial Class Inventory
     Friend WithEvents save_btn As Button
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label3 As Label
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
+    Friend WithEvents btn_User As Button
+    Friend WithEvents btn_SalesReport As Button
     Friend WithEvents categories_btn As Button
     Friend WithEvents stock_btn As Button
     Friend WithEvents Inventory_btn As Button
@@ -698,4 +699,5 @@ Partial Class Inventory
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents fdg As PictureBox
 End Class

@@ -22,7 +22,8 @@ Partial Class Categories
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Categories))
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         fdg = New PictureBox()
         AddCategory_lbl = New Label()
@@ -36,16 +37,16 @@ Partial Class Categories
         Panel4 = New Panel()
         Logout_btn = New Button()
         Label1 = New Label()
-        Button6 = New Button()
-        Button7 = New Button()
-        Button8 = New Button()
-        additem_btn = New Button()
+        btn_User = New Button()
+        btn_Categories = New Button()
+        btn_Stock = New Button()
         Inventory_btn = New Button()
         Dashboard_btn = New Button()
         DataGridView1 = New DataGridView()
         Column1 = New DataGridViewTextBoxColumn()
         Column4 = New DataGridViewTextBoxColumn()
         delete_btn = New Button()
+        salesreport_btn = New Button()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel4.SuspendLayout()
@@ -63,14 +64,15 @@ Partial Class Categories
         ' 
         ' fdg
         ' 
-        fdg.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         fdg.BackgroundImageLayout = ImageLayout.None
+        fdg.Dock = DockStyle.Left
         fdg.ErrorImage = Nothing
-        fdg.Location = New Point(40, 7)
+        fdg.Image = CType(resources.GetObject("fdg.Image"), Image)
+        fdg.Location = New Point(0, 0)
         fdg.Name = "fdg"
-        fdg.Size = New Size(160, 59)
-        fdg.SizeMode = PictureBoxSizeMode.AutoSize
-        fdg.TabIndex = 3
+        fdg.Size = New Size(278, 90)
+        fdg.SizeMode = PictureBoxSizeMode.Zoom
+        fdg.TabIndex = 19
         fdg.TabStop = False
         ' 
         ' AddCategory_lbl
@@ -154,12 +156,12 @@ Partial Class Categories
         ' Panel4
         ' 
         Panel4.BackColor = Color.CadetBlue
+        Panel4.Controls.Add(salesreport_btn)
         Panel4.Controls.Add(Logout_btn)
         Panel4.Controls.Add(Label1)
-        Panel4.Controls.Add(Button6)
-        Panel4.Controls.Add(Button7)
-        Panel4.Controls.Add(Button8)
-        Panel4.Controls.Add(additem_btn)
+        Panel4.Controls.Add(btn_User)
+        Panel4.Controls.Add(btn_Categories)
+        Panel4.Controls.Add(btn_Stock)
         Panel4.Controls.Add(Inventory_btn)
         Panel4.Controls.Add(Dashboard_btn)
         Panel4.Location = New Point(0, 89)
@@ -192,57 +194,44 @@ Partial Class Categories
         Label1.TabIndex = 8
         Label1.Text = "________________________"
         ' 
-        ' Button6
+        ' btn_User
         ' 
-        Button6.FlatAppearance.BorderColor = Color.Teal
-        Button6.FlatStyle = FlatStyle.Flat
-        Button6.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button6.ForeColor = Color.Snow
-        Button6.Location = New Point(24, 371)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(226, 37)
-        Button6.TabIndex = 7
-        Button6.Text = "USER"
-        Button6.UseVisualStyleBackColor = True
+        btn_User.FlatAppearance.BorderColor = Color.Teal
+        btn_User.FlatStyle = FlatStyle.Flat
+        btn_User.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_User.ForeColor = Color.Snow
+        btn_User.Location = New Point(24, 371)
+        btn_User.Name = "btn_User"
+        btn_User.Size = New Size(226, 37)
+        btn_User.TabIndex = 7
+        btn_User.Text = "USER"
+        btn_User.UseVisualStyleBackColor = True
         ' 
-        ' Button7
+        ' btn_Categories
         ' 
-        Button7.FlatAppearance.BorderColor = Color.Teal
-        Button7.FlatStyle = FlatStyle.Flat
-        Button7.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button7.ForeColor = Color.Snow
-        Button7.Location = New Point(24, 317)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(226, 37)
-        Button7.TabIndex = 6
-        Button7.Text = "SALES REPORT"
-        Button7.UseVisualStyleBackColor = True
+        btn_Categories.FlatAppearance.BorderColor = Color.Teal
+        btn_Categories.FlatStyle = FlatStyle.Flat
+        btn_Categories.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_Categories.ForeColor = Color.Snow
+        btn_Categories.Location = New Point(24, 263)
+        btn_Categories.Name = "btn_Categories"
+        btn_Categories.Size = New Size(226, 37)
+        btn_Categories.TabIndex = 5
+        btn_Categories.Text = "CATEGORIES"
+        btn_Categories.UseVisualStyleBackColor = True
         ' 
-        ' Button8
+        ' btn_Stock
         ' 
-        Button8.FlatAppearance.BorderColor = Color.Teal
-        Button8.FlatStyle = FlatStyle.Flat
-        Button8.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        Button8.ForeColor = Color.Snow
-        Button8.Location = New Point(24, 263)
-        Button8.Name = "Button8"
-        Button8.Size = New Size(226, 37)
-        Button8.TabIndex = 5
-        Button8.Text = "CATEGORIES"
-        Button8.UseVisualStyleBackColor = True
-        ' 
-        ' additem_btn
-        ' 
-        additem_btn.FlatAppearance.BorderColor = Color.Teal
-        additem_btn.FlatStyle = FlatStyle.Flat
-        additem_btn.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
-        additem_btn.ForeColor = Color.Snow
-        additem_btn.Location = New Point(24, 207)
-        additem_btn.Name = "additem_btn"
-        additem_btn.Size = New Size(226, 37)
-        additem_btn.TabIndex = 4
-        additem_btn.Text = "STOCK"
-        additem_btn.UseVisualStyleBackColor = True
+        btn_Stock.FlatAppearance.BorderColor = Color.Teal
+        btn_Stock.FlatStyle = FlatStyle.Flat
+        btn_Stock.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        btn_Stock.ForeColor = Color.Snow
+        btn_Stock.Location = New Point(24, 207)
+        btn_Stock.Name = "btn_Stock"
+        btn_Stock.Size = New Size(226, 37)
+        btn_Stock.TabIndex = 4
+        btn_Stock.Text = "STOCK"
+        btn_Stock.UseVisualStyleBackColor = True
         ' 
         ' Inventory_btn
         ' 
@@ -279,14 +268,14 @@ Partial Class Categories
         DataGridView1.BackgroundColor = Color.White
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column4})
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = SystemColors.Window
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Info
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = SystemColors.Window
+        DataGridViewCellStyle4.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle4.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = SystemColors.Info
+        DataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle4
         DataGridView1.Location = New Point(296, 314)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
@@ -323,6 +312,19 @@ Partial Class Categories
         delete_btn.Text = "DELETE"
         delete_btn.UseVisualStyleBackColor = True
         ' 
+        ' salesreport_btn
+        ' 
+        salesreport_btn.FlatAppearance.BorderColor = Color.Teal
+        salesreport_btn.FlatStyle = FlatStyle.Flat
+        salesreport_btn.Font = New Font("Lucida Fax", 13.8F, FontStyle.Bold)
+        salesreport_btn.ForeColor = Color.Snow
+        salesreport_btn.Location = New Point(24, 317)
+        salesreport_btn.Name = "salesreport_btn"
+        salesreport_btn.Size = New Size(226, 37)
+        salesreport_btn.TabIndex = 12
+        salesreport_btn.Text = "SALES REPORT"
+        salesreport_btn.UseVisualStyleBackColor = True
+        ' 
         ' Categories
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -347,7 +349,6 @@ Partial Class Categories
         StartPosition = FormStartPosition.CenterScreen
         Text = "Categories"
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         CType(fdg, ComponentModel.ISupportInitialize).EndInit()
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
@@ -366,16 +367,16 @@ Partial Class Categories
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents additem_btn As Button
+    Friend WithEvents btn_User As Button
+    Friend WithEvents btn_Categories As Button
+    Friend WithEvents btn_Stock As Button
     Friend WithEvents Inventory_btn As Button
     Friend WithEvents Dashboard_btn As Button
-    Friend WithEvents fdg As PictureBox
     Friend WithEvents Logout_btn As Button
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents delete_btn As Button
+    Friend WithEvents fdg As PictureBox
+    Friend WithEvents salesreport_btn As Button
 End Class

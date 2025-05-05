@@ -24,6 +24,8 @@ Public Class Discount
                 If Decimal.TryParse(txt_discount.Text.Trim(), discountValue) Then
                     RaiseEvent DiscountUpdated(discountValue)
                 End If
+
+                ' Clear the discount textbox
                 txt_discount.Clear()
             Else
                 MsgBox("Discount Not Updated", vbExclamation)

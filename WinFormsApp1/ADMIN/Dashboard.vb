@@ -51,4 +51,16 @@
         Stock.Show()
         Me.Hide()
     End Sub
+
+    Private Sub salesreport_btn_Click(sender As Object, e As EventArgs) Handles salesreport_btn.Click
+        Dim SalesReport As New SalesReport()
+        SalesReport.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub user_btn_Click(sender As Object, e As EventArgs) Handles user_btn.Click
+        Dim User As New User()
+        User.Show()
+        Me.Hide()
+    End Sub
 End Class
