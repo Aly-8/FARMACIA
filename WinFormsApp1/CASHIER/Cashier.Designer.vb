@@ -22,7 +22,8 @@ Partial Class Cashier
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         Label4 = New Label()
         Label3 = New Label()
@@ -44,6 +45,8 @@ Partial Class Cashier
         f3_setdiscount = New Button()
         f2_cancel = New Button()
         Panel3 = New Panel()
+        lbl_subtotal = New Label()
+        Label16 = New Label()
         cbo_paymentMode = New ComboBox()
         txt_amountReceived = New TextBox()
         lbl_Change = New Label()
@@ -66,10 +69,11 @@ Partial Class Cashier
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
         Column4 = New DataGridViewTextBoxColumn()
+        Column9 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
         Column5 = New DataGridViewTextBoxColumn()
-        Column7 = New DataGridViewTextBoxColumn()
         Column8 = New DataGridViewTextBoxColumn()
+        Timer1 = New Timer(components)
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
@@ -131,6 +135,7 @@ Partial Class Cashier
         ' 
         ' Panel2
         ' 
+        Panel2.BackColor = Color.LightSteelBlue
         Panel2.Controls.Add(dtp_OrderDate)
         Panel2.Controls.Add(txt_SearchProductCode)
         Panel2.Controls.Add(txt_OrderNo)
@@ -321,6 +326,8 @@ Partial Class Cashier
         ' 
         ' Panel3
         ' 
+        Panel3.Controls.Add(lbl_subtotal)
+        Panel3.Controls.Add(Label16)
         Panel3.Controls.Add(cbo_paymentMode)
         Panel3.Controls.Add(txt_amountReceived)
         Panel3.Controls.Add(lbl_Change)
@@ -339,34 +346,55 @@ Partial Class Cashier
         Panel3.Controls.Add(Label9)
         Panel3.Controls.Add(lbl_OverAllGrandTotal)
         Panel3.Dock = DockStyle.Right
-        Panel3.Location = New Point(818, 134)
+        Panel3.Location = New Point(922, 134)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(453, 406)
+        Panel3.Size = New Size(349, 406)
         Panel3.TabIndex = 4
+        ' 
+        ' lbl_subtotal
+        ' 
+        lbl_subtotal.Anchor = AnchorStyles.Right
+        lbl_subtotal.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lbl_subtotal.Location = New Point(189, 90)
+        lbl_subtotal.Name = "lbl_subtotal"
+        lbl_subtotal.Size = New Size(148, 30)
+        lbl_subtotal.TabIndex = 36
+        lbl_subtotal.Text = "00.00"
+        lbl_subtotal.TextAlign = ContentAlignment.MiddleRight
+        ' 
+        ' Label16
+        ' 
+        Label16.Anchor = AnchorStyles.Right
+        Label16.AutoSize = True
+        Label16.Location = New Point(97, 96)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(72, 20)
+        Label16.TabIndex = 35
+        Label16.Text = "Sub Total"
         ' 
         ' cbo_paymentMode
         ' 
         cbo_paymentMode.Anchor = AnchorStyles.Right
         cbo_paymentMode.FormattingEnabled = True
         cbo_paymentMode.Items.AddRange(New Object() {"CASH", "DEBIT CARD"})
-        cbo_paymentMode.Location = New Point(173, 239)
+        cbo_paymentMode.Location = New Point(189, 248)
         cbo_paymentMode.Name = "cbo_paymentMode"
-        cbo_paymentMode.Size = New Size(268, 28)
+        cbo_paymentMode.Size = New Size(148, 28)
         cbo_paymentMode.TabIndex = 34
         ' 
         ' txt_amountReceived
         ' 
         txt_amountReceived.Anchor = AnchorStyles.Right
-        txt_amountReceived.Location = New Point(174, 283)
+        txt_amountReceived.Location = New Point(189, 292)
         txt_amountReceived.Name = "txt_amountReceived"
-        txt_amountReceived.Size = New Size(267, 27)
+        txt_amountReceived.Size = New Size(148, 27)
         txt_amountReceived.TabIndex = 33
         ' 
         ' lbl_Change
         ' 
         lbl_Change.Anchor = AnchorStyles.Right
         lbl_Change.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_Change.Location = New Point(293, 321)
+        lbl_Change.Location = New Point(189, 330)
         lbl_Change.Name = "lbl_Change"
         lbl_Change.Size = New Size(148, 30)
         lbl_Change.TabIndex = 32
@@ -378,7 +406,7 @@ Partial Class Cashier
         lbl_GrandTotal.Anchor = AnchorStyles.Right
         lbl_GrandTotal.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_GrandTotal.ForeColor = Color.SteelBlue
-        lbl_GrandTotal.Location = New Point(293, 192)
+        lbl_GrandTotal.Location = New Point(189, 205)
         lbl_GrandTotal.Name = "lbl_GrandTotal"
         lbl_GrandTotal.Size = New Size(148, 30)
         lbl_GrandTotal.TabIndex = 30
@@ -389,7 +417,7 @@ Partial Class Cashier
         ' 
         lbl_Discount.Anchor = AnchorStyles.Right
         lbl_Discount.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_Discount.Location = New Point(293, 151)
+        lbl_Discount.Location = New Point(189, 164)
         lbl_Discount.Name = "lbl_Discount"
         lbl_Discount.Size = New Size(148, 30)
         lbl_Discount.TabIndex = 29
@@ -400,7 +428,7 @@ Partial Class Cashier
         ' 
         lbl_TotalPrice.Anchor = AnchorStyles.Right
         lbl_TotalPrice.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_TotalPrice.Location = New Point(293, 108)
+        lbl_TotalPrice.Location = New Point(189, 126)
         lbl_TotalPrice.Name = "lbl_TotalPrice"
         lbl_TotalPrice.Size = New Size(148, 30)
         lbl_TotalPrice.TabIndex = 28
@@ -411,7 +439,7 @@ Partial Class Cashier
         ' 
         lbl_noOfItems.Anchor = AnchorStyles.Right
         lbl_noOfItems.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_noOfItems.Location = New Point(293, 67)
+        lbl_noOfItems.Location = New Point(189, 54)
         lbl_noOfItems.Name = "lbl_noOfItems"
         lbl_noOfItems.Size = New Size(148, 30)
         lbl_noOfItems.TabIndex = 27
@@ -427,7 +455,7 @@ Partial Class Cashier
         btn_Pay.ForeColor = SystemColors.ButtonHighlight
         btn_Pay.Location = New Point(0, 372)
         btn_Pay.Name = "btn_Pay"
-        btn_Pay.Size = New Size(453, 34)
+        btn_Pay.Size = New Size(349, 34)
         btn_Pay.TabIndex = 26
         btn_Pay.Text = "[ F9 - PAY]"
         btn_Pay.UseVisualStyleBackColor = False
@@ -436,7 +464,7 @@ Partial Class Cashier
         ' 
         Label15.Anchor = AnchorStyles.Right
         Label15.AutoSize = True
-        Label15.Location = New Point(95, 327)
+        Label15.Location = New Point(108, 336)
         Label15.Name = "Label15"
         Label15.Size = New Size(61, 20)
         Label15.TabIndex = 25
@@ -446,7 +474,7 @@ Partial Class Cashier
         ' 
         Label14.Anchor = AnchorStyles.Right
         Label14.AutoSize = True
-        Label14.Location = New Point(27, 286)
+        Label14.Location = New Point(40, 295)
         Label14.Name = "Label14"
         Label14.Size = New Size(129, 20)
         Label14.TabIndex = 24
@@ -456,7 +484,7 @@ Partial Class Cashier
         ' 
         Label13.Anchor = AnchorStyles.Right
         Label13.AutoSize = True
-        Label13.Location = New Point(43, 238)
+        Label13.Location = New Point(56, 251)
         Label13.Name = "Label13"
         Label13.Size = New Size(113, 20)
         Label13.TabIndex = 23
@@ -466,7 +494,7 @@ Partial Class Cashier
         ' 
         Label12.Anchor = AnchorStyles.Right
         Label12.AutoSize = True
-        Label12.Location = New Point(68, 198)
+        Label12.Location = New Point(81, 211)
         Label12.Name = "Label12"
         Label12.Size = New Size(88, 20)
         Label12.TabIndex = 22
@@ -475,7 +503,7 @@ Partial Class Cashier
         ' txt_discount
         ' 
         txt_discount.Anchor = AnchorStyles.Right
-        txt_discount.Location = New Point(108, 154)
+        txt_discount.Location = New Point(121, 167)
         txt_discount.Name = "txt_discount"
         txt_discount.Size = New Size(48, 27)
         txt_discount.TabIndex = 19
@@ -484,7 +512,7 @@ Partial Class Cashier
         ' 
         Label11.Anchor = AnchorStyles.Right
         Label11.AutoSize = True
-        Label11.Location = New Point(16, 157)
+        Label11.Location = New Point(29, 170)
         Label11.Name = "Label11"
         Label11.Size = New Size(86, 20)
         Label11.TabIndex = 21
@@ -494,7 +522,7 @@ Partial Class Cashier
         ' 
         Label10.Anchor = AnchorStyles.Right
         Label10.AutoSize = True
-        Label10.Location = New Point(76, 114)
+        Label10.Location = New Point(89, 132)
         Label10.Name = "Label10"
         Label10.Size = New Size(80, 20)
         Label10.TabIndex = 20
@@ -504,7 +532,7 @@ Partial Class Cashier
         ' 
         Label9.Anchor = AnchorStyles.Right
         Label9.AutoSize = True
-        Label9.Location = New Point(64, 73)
+        Label9.Location = New Point(77, 60)
         Label9.Name = "Label9"
         Label9.Size = New Size(92, 20)
         Label9.TabIndex = 19
@@ -515,9 +543,9 @@ Partial Class Cashier
         lbl_OverAllGrandTotal.Anchor = AnchorStyles.Right
         lbl_OverAllGrandTotal.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_OverAllGrandTotal.ForeColor = Color.Teal
-        lbl_OverAllGrandTotal.Location = New Point(19, 14)
+        lbl_OverAllGrandTotal.Location = New Point(20, 5)
         lbl_OverAllGrandTotal.Name = "lbl_OverAllGrandTotal"
-        lbl_OverAllGrandTotal.Size = New Size(431, 38)
+        lbl_OverAllGrandTotal.Size = New Size(326, 38)
         lbl_OverAllGrandTotal.TabIndex = 7
         lbl_OverAllGrandTotal.Text = "00.00"
         lbl_OverAllGrandTotal.TextAlign = ContentAlignment.MiddleRight
@@ -526,24 +554,25 @@ Partial Class Cashier
         ' 
         DataGridView1.AllowUserToAddRows = False
         DataGridView1.AllowUserToDeleteRows = False
+        DataGridView1.AllowUserToResizeRows = False
         DataGridView1.BackgroundColor = SystemColors.ButtonHighlight
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column6, Column5, Column7, Column8})
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = Color.Yellow
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column9, Column6, Column5, Column8})
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Window
+        DataGridViewCellStyle1.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = Color.Yellow
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.Desktop
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.Dock = DockStyle.Fill
         DataGridView1.Location = New Point(0, 134)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(818, 406)
+        DataGridView1.Size = New Size(922, 406)
         DataGridView1.TabIndex = 5
         ' 
         ' Column1
@@ -581,6 +610,15 @@ Partial Class Cashier
         Column4.ReadOnly = True
         Column4.Width = 101
         ' 
+        ' Column9
+        ' 
+        Column9.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column9.HeaderText = "ProductDescription"
+        Column9.MinimumWidth = 6
+        Column9.Name = "Column9"
+        Column9.ReadOnly = True
+        Column9.Width = 170
+        ' 
         ' Column6
         ' 
         Column6.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -599,23 +637,19 @@ Partial Class Cashier
         Column5.ReadOnly = True
         Column5.Width = 72
         ' 
-        ' Column7
-        ' 
-        Column7.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column7.HeaderText = "Subtotal"
-        Column7.MinimumWidth = 6
-        Column7.Name = "Column7"
-        Column7.ReadOnly = True
-        Column7.Width = 95
-        ' 
         ' Column8
         ' 
         Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column8.HeaderText = "Total"
+        Column8.HeaderText = "Total Price"
         Column8.MinimumWidth = 6
         Column8.Name = "Column8"
         Column8.ReadOnly = True
-        Column8.Width = 71
+        Column8.Resizable = DataGridViewTriState.False
+        Column8.Width = 109
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
         ' 
         ' Cashier
         ' 
@@ -650,14 +684,6 @@ Partial Class Cashier
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label4 As Label
@@ -692,4 +718,15 @@ Partial Class Cashier
     Friend WithEvents lbl_TotalPrice As Label
     Friend WithEvents txt_amountReceived As TextBox
     Friend WithEvents cbo_paymentMode As ComboBox
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents lbl_subtotal As Label
+    Friend WithEvents Label16 As Label
 End Class

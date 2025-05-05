@@ -35,10 +35,13 @@ Partial Class Inventory
         Column5 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
         Column7 = New DataGridViewTextBoxColumn()
+        Column8 = New DataGridViewTextBoxColumn()
         Panel3 = New Panel()
         txt_Search = New TextBox()
         Label1 = New Label()
         TabPage2 = New TabPage()
+        txt_totalPrice = New TextBox()
+        lbl_TotalPrice = New Label()
         clear_btn = New Button()
         delete_btn = New Button()
         update_btn = New Button()
@@ -127,7 +130,7 @@ Partial Class Inventory
         DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.BackgroundColor = Color.White
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7})
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8})
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Window
         DataGridViewCellStyle1.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -207,6 +210,15 @@ Partial Class Inventory
         Column7.ReadOnly = True
         Column7.Width = 72
         ' 
+        ' Column8
+        ' 
+        Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column8.HeaderText = "TOTAL PRICE"
+        Column8.MinimumWidth = 6
+        Column8.Name = "Column8"
+        Column8.ReadOnly = True
+        Column8.Width = 116
+        ' 
         ' Panel3
         ' 
         Panel3.Controls.Add(txt_Search)
@@ -237,6 +249,8 @@ Partial Class Inventory
         ' 
         ' TabPage2
         ' 
+        TabPage2.Controls.Add(txt_totalPrice)
+        TabPage2.Controls.Add(lbl_TotalPrice)
         TabPage2.Controls.Add(clear_btn)
         TabPage2.Controls.Add(delete_btn)
         TabPage2.Controls.Add(update_btn)
@@ -264,6 +278,25 @@ Partial Class Inventory
         TabPage2.Text = "MANAGE INVENTORY"
         TabPage2.UseVisualStyleBackColor = True
         ' 
+        ' txt_totalPrice
+        ' 
+        txt_totalPrice.Location = New Point(754, 272)
+        txt_totalPrice.Name = "txt_totalPrice"
+        txt_totalPrice.ReadOnly = True
+        txt_totalPrice.Size = New Size(223, 25)
+        txt_totalPrice.TabIndex = 42
+        ' 
+        ' lbl_TotalPrice
+        ' 
+        lbl_TotalPrice.AutoSize = True
+        lbl_TotalPrice.Font = New Font("Century Schoolbook", 10.2F, FontStyle.Bold)
+        lbl_TotalPrice.ForeColor = Color.Teal
+        lbl_TotalPrice.Location = New Point(599, 275)
+        lbl_TotalPrice.Name = "lbl_TotalPrice"
+        lbl_TotalPrice.Size = New Size(107, 21)
+        lbl_TotalPrice.TabIndex = 41
+        lbl_TotalPrice.Text = "Total Price"
+        ' 
         ' clear_btn
         ' 
         clear_btn.BackColor = Color.DarkCyan
@@ -272,7 +305,7 @@ Partial Class Inventory
         clear_btn.FlatStyle = FlatStyle.Flat
         clear_btn.Font = New Font("Segoe UI", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         clear_btn.ForeColor = Color.White
-        clear_btn.Location = New Point(803, 338)
+        clear_btn.Location = New Point(803, 386)
         clear_btn.Name = "clear_btn"
         clear_btn.Size = New Size(174, 30)
         clear_btn.TabIndex = 40
@@ -287,7 +320,7 @@ Partial Class Inventory
         delete_btn.FlatStyle = FlatStyle.Flat
         delete_btn.Font = New Font("Segoe UI", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         delete_btn.ForeColor = Color.White
-        delete_btn.Location = New Point(599, 338)
+        delete_btn.Location = New Point(599, 386)
         delete_btn.Name = "delete_btn"
         delete_btn.Size = New Size(174, 30)
         delete_btn.TabIndex = 39
@@ -302,7 +335,7 @@ Partial Class Inventory
         update_btn.FlatStyle = FlatStyle.Flat
         update_btn.Font = New Font("Segoe UI", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         update_btn.ForeColor = Color.White
-        update_btn.Location = New Point(388, 338)
+        update_btn.Location = New Point(388, 386)
         update_btn.Name = "update_btn"
         update_btn.Size = New Size(174, 30)
         update_btn.TabIndex = 38
@@ -317,7 +350,7 @@ Partial Class Inventory
         save_btn.FlatStyle = FlatStyle.Flat
         save_btn.Font = New Font("Segoe UI", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         save_btn.ForeColor = Color.White
-        save_btn.Location = New Point(185, 338)
+        save_btn.Location = New Point(185, 386)
         save_btn.Name = "save_btn"
         save_btn.Size = New Size(174, 30)
         save_btn.TabIndex = 37
@@ -356,14 +389,14 @@ Partial Class Inventory
         ' 
         ' txt_price
         ' 
-        txt_price.Location = New Point(754, 269)
+        txt_price.Location = New Point(754, 217)
         txt_price.Name = "txt_price"
         txt_price.Size = New Size(223, 25)
         txt_price.TabIndex = 33
         ' 
         ' txt_productdescription
         ' 
-        txt_productdescription.Location = New Point(754, 166)
+        txt_productdescription.Location = New Point(349, 317)
         txt_productdescription.Name = "txt_productdescription"
         txt_productdescription.Size = New Size(223, 25)
         txt_productdescription.TabIndex = 32
@@ -373,7 +406,7 @@ Partial Class Inventory
         PDescription.AutoSize = True
         PDescription.Font = New Font("Century Schoolbook", 10.2F, FontStyle.Bold)
         PDescription.ForeColor = Color.Teal
-        PDescription.Location = New Point(599, 168)
+        PDescription.Location = New Point(185, 317)
         PDescription.Name = "PDescription"
         PDescription.Size = New Size(112, 21)
         PDescription.TabIndex = 31
@@ -395,7 +428,7 @@ Partial Class Inventory
         PPrice.AutoSize = True
         PPrice.Font = New Font("Century Schoolbook", 10.2F, FontStyle.Bold)
         PPrice.ForeColor = Color.Teal
-        PPrice.Location = New Point(599, 272)
+        PPrice.Location = New Point(599, 220)
         PPrice.Name = "PPrice"
         PPrice.Size = New Size(57, 21)
         PPrice.TabIndex = 29
@@ -403,7 +436,7 @@ Partial Class Inventory
         ' 
         ' txt_stock
         ' 
-        txt_stock.Location = New Point(754, 221)
+        txt_stock.Location = New Point(754, 169)
         txt_stock.Name = "txt_stock"
         txt_stock.Size = New Size(223, 25)
         txt_stock.TabIndex = 28
@@ -420,7 +453,7 @@ Partial Class Inventory
         PQuantity.AutoSize = True
         PQuantity.Font = New Font("Century Schoolbook", 10.2F, FontStyle.Bold)
         PQuantity.ForeColor = Color.Teal
-        PQuantity.Location = New Point(599, 220)
+        PQuantity.Location = New Point(599, 168)
         PQuantity.Name = "PQuantity"
         PQuantity.Size = New Size(58, 21)
         PQuantity.TabIndex = 26
@@ -655,6 +688,8 @@ Partial Class Inventory
     Friend WithEvents txt_Search As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Logout_btn As Button
+    Friend WithEvents txt_totalPrice As TextBox
+    Friend WithEvents lbl_TotalPrice As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -662,4 +697,5 @@ Partial Class Inventory
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
 End Class

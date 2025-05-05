@@ -13,7 +13,7 @@ Public Class Stock
                 conn.Open()
             End If
 
-            cmd = New MySqlCommand("SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price` FROM `tblinventory`", conn)
+            cmd = New MySqlCommand("SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price`, `totalPrice` FROM `tblinventory`", conn)
             dr = cmd.ExecuteReader()
 
             While dr.Read()
@@ -23,11 +23,12 @@ Public Class Stock
                                    dr("CategoryName").ToString(),
                                    dr("ProductDescription").ToString(),
                                    dr("Stock").ToString(),
-                                   dr("Price").ToString())
+                                   dr("Price").ToString(),
+                                   dr("totalPrice").ToString())
             End While
 
         Catch ex As Exception
-            MsgBox("Error while loading stock: " & ex.Message)
+            MsgBox("Error While loading stock: " & ex.Message)
         Finally
             If dr IsNot Nothing AndAlso Not dr.IsClosed Then
                 dr.Close()
@@ -87,7 +88,7 @@ Public Class Stock
         Try
             DataGridView1.Rows.Clear()
             conn.Open()
-            cmd = New MySqlCommand("SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price` 
+            cmd = New MySqlCommand("SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price`, `totalPrice` 
                                 FROM `tblinventory` 
                                 WHERE `ProductCode` LIKE @Search OR `ProductName` LIKE @Search OR `CategoryName` LIKE @Search", conn)
             cmd.Parameters.AddWithValue("@Search", "%" & txt_Search.Text & "%")
@@ -99,7 +100,8 @@ Public Class Stock
                                    dr("CategoryName").ToString(),
                                    dr("ProductDescription").ToString(),
                                    dr("Stock").ToString(),
-                                   dr("Price").ToString())
+                                   dr("Price").ToString(),
+                                   dr("totalPrice").ToString())
             End While
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)

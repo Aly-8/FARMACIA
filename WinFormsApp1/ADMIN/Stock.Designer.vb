@@ -22,7 +22,7 @@ Partial Class Stock
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Exit_btn = New Button()
         Panel1 = New Panel()
         fdg = New PictureBox()
@@ -37,6 +37,11 @@ Partial Class Stock
         Dashboard_btn = New Button()
         AddItem_bttn = New Button()
         DataGridView1 = New DataGridView()
+        txt_Search = New TextBox()
+        Label2 = New Label()
+        AddCategory_lbl = New Label()
+        UpdateStock_btn = New Button()
+        Label3 = New Label()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
@@ -44,11 +49,7 @@ Partial Class Stock
         Column5 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
         Column7 = New DataGridViewTextBoxColumn()
-        txt_Search = New TextBox()
-        Label2 = New Label()
-        AddCategory_lbl = New Label()
-        UpdateStock_btn = New Button()
-        Label3 = New Label()
+        Column9 = New DataGridViewTextBoxColumn()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
@@ -229,21 +230,75 @@ Partial Class Stock
         DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.BackgroundColor = Color.White
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7})
-        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = SystemColors.Window
-        DataGridViewCellStyle8.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle8.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = SystemColors.Info
-        DataGridViewCellStyle8.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.False
-        DataGridView1.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column9})
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Window
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Info
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.Location = New Point(293, 201)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.Size = New Size(1195, 343)
         DataGridView1.TabIndex = 21
+        ' 
+        ' txt_Search
+        ' 
+        txt_Search.Location = New Point(370, 156)
+        txt_Search.Name = "txt_Search"
+        txt_Search.Size = New Size(366, 27)
+        txt_Search.TabIndex = 27
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Century Schoolbook", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.Teal
+        Label2.Location = New Point(297, 158)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(67, 19)
+        Label2.TabIndex = 26
+        Label2.Text = "Search "
+        ' 
+        ' AddCategory_lbl
+        ' 
+        AddCategory_lbl.AutoSize = True
+        AddCategory_lbl.Font = New Font("Palatino Linotype", 25.8F, FontStyle.Bold)
+        AddCategory_lbl.ForeColor = Color.Teal
+        AddCategory_lbl.Location = New Point(794, 93)
+        AddCategory_lbl.Name = "AddCategory_lbl"
+        AddCategory_lbl.Size = New Size(180, 58)
+        AddCategory_lbl.TabIndex = 28
+        AddCategory_lbl.Text = "STOCK"
+        ' 
+        ' UpdateStock_btn
+        ' 
+        UpdateStock_btn.BackColor = Color.DarkCyan
+        UpdateStock_btn.FlatAppearance.BorderSize = 0
+        UpdateStock_btn.FlatStyle = FlatStyle.Popup
+        UpdateStock_btn.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        UpdateStock_btn.ForeColor = SystemColors.ButtonHighlight
+        UpdateStock_btn.Location = New Point(1345, 156)
+        UpdateStock_btn.Name = "UpdateStock_btn"
+        UpdateStock_btn.Size = New Size(142, 31)
+        UpdateStock_btn.TabIndex = 29
+        UpdateStock_btn.Text = "UPDATE STOCK"
+        UpdateStock_btn.UseVisualStyleBackColor = False
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label3.ForeColor = Color.IndianRed
+        Label3.Location = New Point(811, 561)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(677, 20)
+        Label3.TabIndex = 30
+        Label3.Text = "NOTE: Do not leave the stock blank, as it will invalidate the data you inserted when updating."
         ' 
         ' Column1
         ' 
@@ -312,59 +367,12 @@ Partial Class Stock
         Column7.Resizable = DataGridViewTriState.False
         Column7.Width = 76
         ' 
-        ' txt_Search
+        ' Column9
         ' 
-        txt_Search.Location = New Point(370, 156)
-        txt_Search.Name = "txt_Search"
-        txt_Search.Size = New Size(366, 27)
-        txt_Search.TabIndex = 27
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Century Schoolbook", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.Teal
-        Label2.Location = New Point(297, 158)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(67, 19)
-        Label2.TabIndex = 26
-        Label2.Text = "Search "
-        ' 
-        ' AddCategory_lbl
-        ' 
-        AddCategory_lbl.AutoSize = True
-        AddCategory_lbl.Font = New Font("Palatino Linotype", 25.8F, FontStyle.Bold)
-        AddCategory_lbl.ForeColor = Color.Teal
-        AddCategory_lbl.Location = New Point(794, 93)
-        AddCategory_lbl.Name = "AddCategory_lbl"
-        AddCategory_lbl.Size = New Size(180, 58)
-        AddCategory_lbl.TabIndex = 28
-        AddCategory_lbl.Text = "STOCK"
-        ' 
-        ' UpdateStock_btn
-        ' 
-        UpdateStock_btn.BackColor = Color.DarkCyan
-        UpdateStock_btn.FlatAppearance.BorderSize = 0
-        UpdateStock_btn.FlatStyle = FlatStyle.Popup
-        UpdateStock_btn.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        UpdateStock_btn.ForeColor = SystemColors.ButtonHighlight
-        UpdateStock_btn.Location = New Point(1345, 156)
-        UpdateStock_btn.Name = "UpdateStock_btn"
-        UpdateStock_btn.Size = New Size(142, 31)
-        UpdateStock_btn.TabIndex = 29
-        UpdateStock_btn.Text = "UPDATE STOCK"
-        UpdateStock_btn.UseVisualStyleBackColor = False
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        Label3.ForeColor = Color.IndianRed
-        Label3.Location = New Point(811, 561)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(677, 20)
-        Label3.TabIndex = 30
-        Label3.Text = "NOTE: Do not leave the stock blank, as it will invalidate the data you inserted when updating."
+        Column9.HeaderText = "TOTAL PRICE"
+        Column9.MinimumWidth = 6
+        Column9.Name = "Column9"
+        Column9.Width = 125
         ' 
         ' Stock
         ' 
@@ -414,6 +422,7 @@ Partial Class Stock
     Friend WithEvents AddCategory_lbl As Label
     Friend WithEvents Logout_btn As Button
     Friend WithEvents UpdateStock_btn As Button
+    Friend WithEvents Label3 As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -421,5 +430,5 @@ Partial Class Stock
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents Label3 As Label
+    Friend WithEvents Column9 As DataGridViewTextBoxColumn
 End Class

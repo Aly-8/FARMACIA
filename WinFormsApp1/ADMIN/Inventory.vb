@@ -41,7 +41,7 @@ Public Class Inventory 'manageproduct
             cmd = New MySqlCommand(query, conn)
             dr = cmd.ExecuteReader()
             While dr.Read
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("ProductCode"), dr.Item("ProductName"), dr.Item("CategoryName"), dr.Item("ProductDescription"), dr.Item("Stock"), dr.Item("Price"))
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("ProductCode"), dr.Item("ProductName"), dr.Item("CategoryName"), dr.Item("ProductDescription"), dr.Item("Stock"), dr.Item("Price"), dr.Item("totalPrice"))
             End While
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -62,6 +62,7 @@ Public Class Inventory 'manageproduct
         txt_productdescription.Clear()
         txt_stock.Clear()
         txt_price.Clear()
+        txt_totalPrice.Clear()
         cbo_category.SelectedIndex = -1
 
     End Sub
@@ -114,14 +115,15 @@ Public Class Inventory 'manageproduct
                 ' Product code already exists
                 MsgBox("The product code already exists. Please use a different product code.", vbExclamation)
             Else
-                cmd = New MySqlCommand("INSERT INTO `tblinventory`(`ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price`) VALUES (@ProductCode, @ProductName, @CategoryName, @ProductDescription, @Stock, @Price)", conn)
+                cmd = New MySqlCommand("INSERT INTO `tblinventory`(`ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price`, `totalPrice`) VALUES (@ProductCode, @ProductName, @CategoryName, @ProductDescription, @Stock, @Price, @totalPrice)", conn)
                 cmd.Parameters.Clear()
                 cmd.Parameters.AddWithValue("@ProductCode", txt_productcode.Text)
                 cmd.Parameters.AddWithValue("@ProductName", txt_productname.Text)
                 cmd.Parameters.AddWithValue("@CategoryName", cbo_category.Text)
                 cmd.Parameters.AddWithValue("@ProductDescription", txt_productdescription.Text)
                 cmd.Parameters.AddWithValue("@Stock", txt_stock.Text)
-                cmd.Parameters.AddWithValue("@Price", txt_price.Text)
+                cmd.Parameters.AddWithValue("@Price", CDec(txt_price.Text))
+                cmd.Parameters.AddWithValue("@totalPrice", CDec(txt_totalPrice.Text))
                 Dim i As Integer = cmd.ExecuteNonQuery()
                 If i > 0 Then
                     MsgBox("New Product Saved Successfully!", vbInformation)
@@ -133,6 +135,7 @@ Public Class Inventory 'manageproduct
             MsgBox(ex.Message)
         Finally
             conn.Close()
+            load_product()
         End Try
         clear()
 
@@ -156,7 +159,7 @@ Public Class Inventory 'manageproduct
         Try
             conn.Open()
 
-            Dim query As String = "SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price` FROM `tblInventory` WHERE `ProductCode` = @ProductCode"
+            Dim query As String = "SELECT `ProductCode`, `ProductName`, `CategoryName`, `ProductDescription`, `Stock`, `Price`, `totalPrice` FROM `tblInventory` WHERE `ProductCode` = @ProductCode"
             cmd = New MySqlCommand(query, conn)
             cmd.Parameters.AddWithValue("@ProductCode", txt_SearchProductCode.Text.Trim())
             dr = cmd.ExecuteReader()
@@ -168,6 +171,7 @@ Public Class Inventory 'manageproduct
                 txt_productdescription.Text = dr("ProductDescription").ToString()
                 txt_stock.Text = dr("Stock").ToString()
                 txt_price.Text = dr("Price").ToString()
+                txt_totalPrice.Text = dr("totalPrice").ToString()
             Else
                 MessageBox.Show("No matching product found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
@@ -183,14 +187,16 @@ Public Class Inventory 'manageproduct
     Private Sub update_btn_Click(sender As Object, e As EventArgs) Handles update_btn.Click
         Try
             conn.Open()
-            cmd = New MySqlCommand("UPDATE `tblinventory` SET `ProductName`=@ProductName, `CategoryName`= @CategoryName,`ProductDescription`= @ProductDescription,`Stock`= @Stock,`Price`= @Price WHERE `ProductCode`= @ProductCode", conn)
+            cmd = New MySqlCommand("UPDATE `tblinventory` SET `ProductName`=@ProductName, `CategoryName`= @CategoryName,`ProductDescription`= @ProductDescription,`Stock`= @Stock,`Price`= @Price, `totalPrice`= @totalPrice WHERE `ProductCode`= @ProductCode", conn)
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@ProductName", txt_productname.Text)
             cmd.Parameters.AddWithValue("@CategoryName", cbo_category.Text)
             cmd.Parameters.AddWithValue("@ProductDescription", txt_productdescription.Text)
             cmd.Parameters.AddWithValue("@Stock", txt_stock.Text)
             cmd.Parameters.AddWithValue("@Price", txt_price.Text)
+            cmd.Parameters.AddWithValue("@totalPrice", txt_totalPrice.Text)
             cmd.Parameters.AddWithValue("@ProductCode", txt_productcode.Text)
+
 
             Dim i As Integer = cmd.ExecuteNonQuery()
             If i > 0 Then
@@ -230,6 +236,20 @@ Public Class Inventory 'manageproduct
             load_product()
         Else
             Return
+        End If
+    End Sub
+    Private Sub txt_price_TextChanged(sender As Object, e As EventArgs) Handles txt_price.TextChanged, txt_stock.TextChanged
+        UpdateTotalPrice()
+    End Sub
+
+    Private Sub UpdateTotalPrice()
+        Dim price As Decimal
+        Dim stock As Integer
+        If Decimal.TryParse(txt_price.Text, price) AndAlso Integer.TryParse(txt_stock.Text, stock) Then
+            Dim totalPrice As Decimal = price * stock
+            txt_totalPrice.Text = totalPrice.ToString("F2")
+        Else
+            txt_totalPrice.Clear()
         End If
     End Sub
 
