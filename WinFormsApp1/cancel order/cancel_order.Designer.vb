@@ -28,11 +28,11 @@ Partial Class cancel_order
         txt_Search = New TextBox()
         Search = New Label()
         DataGridView1 = New DataGridView()
-        Column1 = New DataGridViewButtonColumn()
+        Column1 = New DataGridViewTextBoxColumn()
         OrderNo = New DataGridViewTextBoxColumn()
         OrderDate = New DataGridViewTextBoxColumn()
         totalPrice = New DataGridViewTextBoxColumn()
-        ColDel = New DataGridViewTextBoxColumn()
+        ColDel = New DataGridViewButtonColumn()
         Panel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -90,8 +90,6 @@ Partial Class cancel_order
         Column1.Name = "Column1"
         Column1.ReadOnly = True
         Column1.Resizable = DataGridViewTriState.False
-        Column1.SortMode = DataGridViewColumnSortMode.Automatic
-        Column1.UseColumnTextForButtonValue = True
         Column1.Width = 47
         ' 
         ' OrderNo
@@ -126,6 +124,7 @@ Partial Class cancel_order
         ' ColDel
         ' 
         ColDel.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = Color.Teal
         DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = Color.White
@@ -134,7 +133,11 @@ Partial Class cancel_order
         ColDel.MinimumWidth = 6
         ColDel.Name = "ColDel"
         ColDel.ReadOnly = True
+        ColDel.Resizable = DataGridViewTriState.True
+        ColDel.SortMode = DataGridViewColumnSortMode.Automatic
+        ColDel.Text = "DELETE"
         ColDel.ToolTipText = "DELETE"
+        ColDel.UseColumnTextForButtonValue = True
         ColDel.Width = 91
         ' 
         ' cancel_order
@@ -157,9 +160,9 @@ Partial Class cancel_order
     Friend WithEvents Search As Label
     Friend WithEvents txt_Search As TextBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Column1 As DataGridViewButtonColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents OrderNo As DataGridViewTextBoxColumn
     Friend WithEvents OrderDate As DataGridViewTextBoxColumn
     Friend WithEvents totalPrice As DataGridViewTextBoxColumn
-    Friend WithEvents ColDel As DataGridViewTextBoxColumn
+    Friend WithEvents ColDel As DataGridViewButtonColumn
 End Class
