@@ -247,6 +247,7 @@ Public Class Cashier
         txt_SearchProductCode.Clear()
         DataGridView1.Rows.Clear()
         lbl_Change.Text = "0.00"
+        txt_discount.Text = "0.00"
         lbl_Discount.Text = "0.00"
         lbl_GrandTotal.Text = "0.00"
         lbl_noOfItems.Text = "0"

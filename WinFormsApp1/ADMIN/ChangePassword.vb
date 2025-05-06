@@ -48,11 +48,12 @@ Public Class ChangePassword
         txt_newpassword.Clear()
         txt_oldpassword.Clear()
         txt_reenterPassword.Clear()
-        Me.Close()
-        Login.Show()
+        Me.Hide()
+        Dim cashier As New Cashier()
+        cashier.Show()
     End Sub
 
     Private Sub Exit_btn_Click(sender As Object, e As EventArgs) Handles Exit_btn.Click
-        Application.Exit()
+        Me.Close()
     End Sub
 End Class
