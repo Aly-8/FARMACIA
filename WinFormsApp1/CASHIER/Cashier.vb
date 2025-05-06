@@ -149,21 +149,16 @@ Public Class Cashier
 
 
     Private Sub f3_setdiscount_Click(sender As Object, e As EventArgs) Handles f3_setdiscount.Click
-        ' Create an instance of the Discount form
         Dim discountForm As New Discount()
 
-        ' Subscribe to the DiscountUpdated event
         AddHandler discountForm.DiscountUpdated, AddressOf UpdateDiscountInCashier
 
-        ' Show the Discount form
         discountForm.Show()
     End Sub
 
     Private Sub UpdateDiscountInCashier(newDiscount As Decimal)
-        ' Update the discount textbox
         txt_discount.Text = newDiscount.ToString("#,##0.00")
 
-        ' Recalculate totals to reflect the new discount
         total()
     End Sub
 
@@ -197,12 +192,12 @@ Public Class Cashier
                 Using cmd As New MySqlCommand("
                     INSERT INTO tblpos (
                         OrderNo, OrderDate, OrderMonth, OrderMonthYear,
-                        Product_Code, Product_Name, CategoryName, ProductDescription, 
+                        ProductCode, Product_Name, CategoryName, ProductDescription, 
                         Quantity, Price, Subtotal, totalPrice, discount, grandTotal, 
                         paymentMode, amountReceived, balance, finalTotalPrice
                     ) VALUES (
                         @OrderNo, @OrderDate, @OrderMonth, @OrderMonthYear,
-                        @Product_Code, @Product_Name, @CategoryName, @ProductDescription, 
+                        @ProductCode, @Product_Name, @CategoryName, @ProductDescription, 
                         @Quantity, @Price, @Subtotal, @totalPrice, @discount, @grandTotal, 
                         @paymentMode, @amountReceived, @balance, @finalTotalPrice
                     )", conn)
@@ -211,7 +206,7 @@ Public Class Cashier
                     cmd.Parameters.AddWithValue("@OrderMonth", Date.Now.ToString("MM"))
                     cmd.Parameters.AddWithValue("@OrderMonthYear", Date.Now.ToString("MMMM-yyyy"))
 
-                    cmd.Parameters.AddWithValue("@Product_Code", DataGridView1.Rows(j).Cells(1).Value)
+                    cmd.Parameters.AddWithValue("@ProductCode", DataGridView1.Rows(j).Cells(1).Value)
                     cmd.Parameters.AddWithValue("@Product_Name", DataGridView1.Rows(j).Cells(2).Value)
                     cmd.Parameters.AddWithValue("@CategoryName", DataGridView1.Rows(j).Cells(3).Value)
                     cmd.Parameters.AddWithValue("@ProductDescription", DataGridView1.Rows(j).Cells(4).Value)
@@ -247,6 +242,7 @@ Public Class Cashier
         txt_SearchProductCode.Clear()
         DataGridView1.Rows.Clear()
         lbl_Change.Text = "0.00"
+        txt_discount.Text = "0.00"
         lbl_Discount.Text = "0.00"
         lbl_GrandTotal.Text = "0.00"
         lbl_noOfItems.Text = "0"
@@ -281,7 +277,4 @@ Public Class Cashier
         Me.Hide()
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 End Class

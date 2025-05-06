@@ -53,6 +53,6 @@ Public Class ChangePassword
     End Sub
 
     Private Sub Exit_btn_Click(sender As Object, e As EventArgs) Handles Exit_btn.Click
-        Application.Exit()
+        Me.Close()
     End Sub
 End Class
