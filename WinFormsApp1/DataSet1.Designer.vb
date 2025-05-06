@@ -542,7 +542,7 @@ Namespace FARMACIA
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
             Public Overloads Function AddDataTable1Row( _
                         ByVal OrderNo As String,  _
-                        ByVal OrderDate As String,  _
+                        ByVal OrderDate As Date,  _
                         ByVal OrderMonth As String,  _
                         ByVal OrderMonthYear As String,  _
                         ByVal ProductCode As String,  _
@@ -608,7 +608,7 @@ Namespace FARMACIA
             Private Sub InitClass()
                 Me.columnOrderNo = New Global.System.Data.DataColumn("OrderNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnOrderNo)
-                Me.columnOrderDate = New Global.System.Data.DataColumn("OrderDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+                Me.columnOrderDate = New Global.System.Data.DataColumn("OrderDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnOrderDate)
                 Me.columnOrderMonth = New Global.System.Data.DataColumn("OrderMonth", GetType(String), Nothing, Global.System.Data.MappingType.Element)
                 MyBase.Columns.Add(Me.columnOrderMonth)
@@ -803,10 +803,10 @@ Namespace FARMACIA
             
             <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
              Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-            Public Property OrderDate() As String
+            Public Property OrderDate() As Date
                 Get
                     Try 
-                        Return CType(Me(Me.tableDataTable1.OrderDateColumn),String)
+                        Return CType(Me(Me.tableDataTable1.OrderDateColumn),Date)
                     Catch e As Global.System.InvalidCastException
                         Throw New Global.System.Data.StrongTypingException("The value for column 'OrderDate' in table 'DataTable1' is DBNull.", e)
                     End Try
