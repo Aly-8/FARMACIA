@@ -22,14 +22,9 @@ Partial Class Cashier_SalesReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         DataGridView1 = New DataGridView()
-        Column1 = New DataGridViewTextBoxColumn()
-        Column2 = New DataGridViewTextBoxColumn()
-        Column3 = New DataGridViewTextBoxColumn()
-        Column4 = New DataGridViewTextBoxColumn()
-        Column6 = New DataGridViewTextBoxColumn()
-        Column5 = New DataGridViewTextBoxColumn()
         Panel4 = New Panel()
         Label3 = New Label()
         btn_filter = New Button()
@@ -41,6 +36,13 @@ Partial Class Cashier_SalesReport
         Panel3 = New Panel()
         lbl_totalDisplay = New Label()
         Label2 = New Label()
+        Timer1 = New Timer(components)
+        Column1 = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column6 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         Panel4.SuspendLayout()
         Panel3.SuspendLayout()
@@ -60,61 +62,6 @@ Partial Class Cashier_SalesReport
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.Size = New Size(1096, 511)
         DataGridView1.TabIndex = 13
-        ' 
-        ' Column1
-        ' 
-        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column1.HeaderText = "#"
-        Column1.MinimumWidth = 6
-        Column1.Name = "Column1"
-        Column1.ReadOnly = True
-        Column1.Width = 47
-        ' 
-        ' Column2
-        ' 
-        Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Column2.HeaderText = "Transaction No."
-        Column2.MinimumWidth = 6
-        Column2.Name = "Column2"
-        Column2.ReadOnly = True
-        ' 
-        ' Column3
-        ' 
-        Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Column3.DefaultCellStyle = DataGridViewCellStyle2
-        Column3.HeaderText = "Date"
-        Column3.MinimumWidth = 6
-        Column3.Name = "Column3"
-        Column3.ReadOnly = True
-        Column3.Width = 70
-        ' 
-        ' Column4
-        ' 
-        Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column4.HeaderText = "Month"
-        Column4.MinimumWidth = 6
-        Column4.Name = "Column4"
-        Column4.ReadOnly = True
-        Column4.Width = 81
-        ' 
-        ' Column6
-        ' 
-        Column6.HeaderText = "Month and Year"
-        Column6.MinimumWidth = 6
-        Column6.Name = "Column6"
-        Column6.ReadOnly = True
-        Column6.Width = 125
-        ' 
-        ' Column5
-        ' 
-        Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column5.HeaderText = "Grand Total"
-        Column5.MinimumWidth = 6
-        Column5.Name = "Column5"
-        Column5.ReadOnly = True
-        Column5.Width = 106
         ' 
         ' Panel4
         ' 
@@ -232,6 +179,67 @@ Partial Class Cashier_SalesReport
         Label2.TabIndex = 0
         Label2.Text = "Sales Report"
         ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
+        ' 
+        ' Column1
+        ' 
+        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column1.HeaderText = "#"
+        Column1.MinimumWidth = 6
+        Column1.Name = "Column1"
+        Column1.ReadOnly = True
+        Column1.Width = 47
+        ' 
+        ' Column2
+        ' 
+        Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Column2.HeaderText = "Transaction No."
+        Column2.MinimumWidth = 6
+        Column2.Name = "Column2"
+        Column2.ReadOnly = True
+        ' 
+        ' Column3
+        ' 
+        Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Column3.DefaultCellStyle = DataGridViewCellStyle1
+        Column3.HeaderText = "Date"
+        Column3.MinimumWidth = 6
+        Column3.Name = "Column3"
+        Column3.ReadOnly = True
+        Column3.Width = 70
+        ' 
+        ' Column4
+        ' 
+        Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column4.HeaderText = "Month"
+        Column4.MinimumWidth = 6
+        Column4.Name = "Column4"
+        Column4.ReadOnly = True
+        Column4.Visible = False
+        Column4.Width = 81
+        ' 
+        ' Column6
+        ' 
+        Column6.HeaderText = "Month and Year"
+        Column6.MinimumWidth = 6
+        Column6.Name = "Column6"
+        Column6.ReadOnly = True
+        Column6.Visible = False
+        Column6.Width = 125
+        ' 
+        ' Column5
+        ' 
+        Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column5.HeaderText = "Grand Total"
+        Column5.MinimumWidth = 6
+        Column5.Name = "Column5"
+        Column5.ReadOnly = True
+        Column5.Width = 115
+        ' 
         ' Cashier_SalesReport
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -251,12 +259,6 @@ Partial Class Cashier_SalesReport
     End Sub
 
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label3 As Label
     Friend WithEvents btn_filter As Button
@@ -268,4 +270,11 @@ Partial Class Cashier_SalesReport
     Friend WithEvents Panel3 As Panel
     Friend WithEvents lbl_totalDisplay As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class
