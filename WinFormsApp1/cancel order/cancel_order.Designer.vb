@@ -28,7 +28,7 @@ Partial Class cancel_order
         txt_Search = New TextBox()
         Search = New Label()
         DataGridView1 = New DataGridView()
-        Column1 = New DataGridViewTextBoxColumn()
+        Column1 = New DataGridViewButtonColumn()
         OrderNo = New DataGridViewTextBoxColumn()
         OrderDate = New DataGridViewTextBoxColumn()
         totalPrice = New DataGridViewTextBoxColumn()
@@ -90,6 +90,8 @@ Partial Class cancel_order
         Column1.Name = "Column1"
         Column1.ReadOnly = True
         Column1.Resizable = DataGridViewTriState.False
+        Column1.SortMode = DataGridViewColumnSortMode.Automatic
+        Column1.UseColumnTextForButtonValue = True
         Column1.Width = 47
         ' 
         ' OrderNo
@@ -143,6 +145,7 @@ Partial Class cancel_order
         Controls.Add(DataGridView1)
         Controls.Add(Panel1)
         Name = "cancel_order"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "cancel order"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
@@ -154,7 +157,7 @@ Partial Class cancel_order
     Friend WithEvents Search As Label
     Friend WithEvents txt_Search As TextBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewButtonColumn
     Friend WithEvents OrderNo As DataGridViewTextBoxColumn
     Friend WithEvents OrderDate As DataGridViewTextBoxColumn
     Friend WithEvents totalPrice As DataGridViewTextBoxColumn
