@@ -277,4 +277,7 @@ Public Class Cashier
         Me.Hide()
     End Sub
 
+    Private Sub f4_report_Click(sender As Object, e As EventArgs) Handles f4_report.Click
+        Cashier_SalesReport.ShowDialog()
+    End Sub
 End Class

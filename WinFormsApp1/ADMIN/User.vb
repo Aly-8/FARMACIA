@@ -84,7 +84,7 @@ Public Class User
 
     Private Sub btn_SalesReport_Click(sender As Object, e As EventArgs) Handles btn_SalesReport.Click
         Dim SalesReport As New SalesReport()
-        SalesReport.Show()
+        Cashier_SalesReport.ShowDialog()
         Me.Hide()
     End Sub
 
