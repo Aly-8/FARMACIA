@@ -22,6 +22,7 @@ Partial Class SalesReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesReport))
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel2 = New Panel()
@@ -48,6 +49,7 @@ Partial Class SalesReport
         rbtn_Today = New RadioButton()
         txt_search = New TextBox()
         DataGridView1 = New DataGridView()
+        Timer1 = New Timer(components)
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
@@ -223,7 +225,7 @@ Partial Class SalesReport
         Panel3.Controls.Add(Label2)
         Panel3.Location = New Point(276, 89)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(946, 95)
+        Panel3.Size = New Size(1212, 95)
         Panel3.TabIndex = 8
         ' 
         ' lbl_totalDisplay
@@ -231,7 +233,7 @@ Partial Class SalesReport
         lbl_totalDisplay.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lbl_totalDisplay.Font = New Font("Segoe UI Semibold", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_totalDisplay.ForeColor = Color.PaleGreen
-        lbl_totalDisplay.Location = New Point(699, 25)
+        lbl_totalDisplay.Location = New Point(965, 25)
         lbl_totalDisplay.Name = "lbl_totalDisplay"
         lbl_totalDisplay.Size = New Size(244, 63)
         lbl_totalDisplay.TabIndex = 1
@@ -260,7 +262,7 @@ Partial Class SalesReport
         Panel4.Controls.Add(txt_search)
         Panel4.Location = New Point(276, 180)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(946, 71)
+        Panel4.Size = New Size(1212, 71)
         Panel4.TabIndex = 9
         ' 
         ' Label3
@@ -344,12 +346,17 @@ Partial Class SalesReport
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(946, 354)
+        DataGridView1.Size = New Size(1212, 354)
         DataGridView1.TabIndex = 10
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
         ' 
         ' Column1
         ' 
         Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column1.Frozen = True
         Column1.HeaderText = "#"
         Column1.MinimumWidth = 6
         Column1.Name = "Column1"
@@ -383,6 +390,7 @@ Partial Class SalesReport
         Column4.MinimumWidth = 6
         Column4.Name = "Column4"
         Column4.ReadOnly = True
+        Column4.Visible = False
         Column4.Width = 81
         ' 
         ' Column6
@@ -391,6 +399,7 @@ Partial Class SalesReport
         Column6.MinimumWidth = 6
         Column6.Name = "Column6"
         Column6.ReadOnly = True
+        Column6.Visible = False
         Column6.Width = 125
         ' 
         ' Column5
@@ -400,7 +409,7 @@ Partial Class SalesReport
         Column5.MinimumWidth = 6
         Column5.Name = "Column5"
         Column5.ReadOnly = True
-        Column5.Width = 106
+        Column5.Width = 115
         ' 
         ' SalesReport
         ' 
@@ -453,6 +462,7 @@ Partial Class SalesReport
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents lbl_totalDisplay As Label
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Timer1 As Timer
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn

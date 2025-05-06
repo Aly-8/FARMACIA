@@ -5,7 +5,9 @@ Public Class Cashier_SalesReport
 
     Private Sub Cashier_SalesReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dbconn()
+        DataGridView1.RowTemplate.Height = 30
         Load_Report()
+        Total()
 
     End Sub
 
@@ -81,7 +83,7 @@ Public Class Cashier_SalesReport
         DataGridView1.Rows.Clear()
         Try
             conn.Open()
-            cmd = New MySqlCommand("SELECT  `OrderNo`, `OrderDate`, `OrderMonth`, `OrderMonthYear`,  `grandTotal` FROM `tblpos` WHERE OrderDate between " & date1 & " and " & date2 & " Group by OrderNo", conn)
+            cmd = New MySqlCommand("SELECT  `OrderNo`, `OrderDate`, `OrderMonth`, `OrderMonthYear`,  `grandTotal` FROM `tblpos` WHERE OrderDate between '" & date1 & "' and '" & date2 & "' Group by OrderNo", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
                 DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("OrderNo"), dr.Item("OrderDate"), dr.Item("OrderMonth"), dr.Item("OrderMonthYear"), dr.Item("grandTotal"))
@@ -90,5 +92,21 @@ Public Class Cashier_SalesReport
             MsgBox(ex.Message)
         End Try
         conn.Close()
+    End Sub
+
+    Sub Total()
+        Try
+            Dim sum As Double = 0
+            For i As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
+                sum = sum + DataGridView1.Rows(i).Cells(5).Value
+            Next
+            lbl_totalDisplay.Text = Format(CDec(sum), "#,##0.00")
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Total()
     End Sub
 End Class
