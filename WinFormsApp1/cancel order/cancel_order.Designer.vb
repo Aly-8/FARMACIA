@@ -22,14 +22,17 @@ Partial Class cancel_order
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
-        TextBox1 = New TextBox()
+        txt_Search = New TextBox()
         Search = New Label()
         DataGridView1 = New DataGridView()
         Column1 = New DataGridViewTextBoxColumn()
-        Column2 = New DataGridViewTextBoxColumn()
-        Column4 = New DataGridViewTextBoxColumn()
-        Column5 = New DataGridViewButtonColumn()
+        OrderNo = New DataGridViewTextBoxColumn()
+        OrderDate = New DataGridViewTextBoxColumn()
+        totalPrice = New DataGridViewTextBoxColumn()
+        ColDel = New DataGridViewTextBoxColumn()
         Panel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -37,7 +40,7 @@ Partial Class cancel_order
         ' Panel1
         ' 
         Panel1.BackColor = SystemColors.ActiveCaption
-        Panel1.Controls.Add(TextBox1)
+        Panel1.Controls.Add(txt_Search)
         Panel1.Controls.Add(Search)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
@@ -45,12 +48,12 @@ Partial Class cancel_order
         Panel1.Size = New Size(1062, 69)
         Panel1.TabIndex = 0
         ' 
-        ' TextBox1
+        ' txt_Search
         ' 
-        TextBox1.Location = New Point(113, 24)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(249, 27)
-        TextBox1.TabIndex = 4
+        txt_Search.Location = New Point(113, 24)
+        txt_Search.Name = "txt_Search"
+        txt_Search.Size = New Size(249, 27)
+        txt_Search.TabIndex = 4
         ' 
         ' Search
         ' 
@@ -69,7 +72,7 @@ Partial Class cancel_order
         DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.BackgroundColor = SystemColors.ButtonFace
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column4, Column5})
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, OrderNo, OrderDate, totalPrice, ColDel})
         DataGridView1.Dock = DockStyle.Fill
         DataGridView1.Location = New Point(0, 69)
         DataGridView1.Name = "DataGridView1"
@@ -81,40 +84,56 @@ Partial Class cancel_order
         ' 
         ' Column1
         ' 
+        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         Column1.HeaderText = "#"
         Column1.MinimumWidth = 6
         Column1.Name = "Column1"
         Column1.ReadOnly = True
         Column1.Resizable = DataGridViewTriState.False
-        Column1.Width = 125
+        Column1.Width = 47
         ' 
-        ' Column2
+        ' OrderNo
         ' 
-        Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Column2.HeaderText = "PRODUCT CODE"
-        Column2.MinimumWidth = 6
-        Column2.Name = "Column2"
-        Column2.ReadOnly = True
+        OrderNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        OrderNo.HeaderText = "ORDER NO"
+        OrderNo.MinimumWidth = 6
+        OrderNo.Name = "OrderNo"
+        OrderNo.ReadOnly = True
         ' 
-        ' Column4
+        ' OrderDate
         ' 
-        Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column4.HeaderText = "TOTAL"
-        Column4.MinimumWidth = 6
-        Column4.Name = "Column4"
-        Column4.ReadOnly = True
-        Column4.Width = 79
+        OrderDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle1.Format = "d"
+        DataGridViewCellStyle1.NullValue = Nothing
+        OrderDate.DefaultCellStyle = DataGridViewCellStyle1
+        OrderDate.HeaderText = "ORDER DATE"
+        OrderDate.MinimumWidth = 6
+        OrderDate.Name = "OrderDate"
+        OrderDate.ReadOnly = True
+        OrderDate.Width = 126
         ' 
-        ' Column5
+        ' totalPrice
         ' 
-        Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        Column5.FlatStyle = FlatStyle.Flat
-        Column5.HeaderText = "ACTION"
-        Column5.MinimumWidth = 6
-        Column5.Name = "Column5"
-        Column5.ReadOnly = True
-        Column5.Text = "DELETE"
-        Column5.Width = 68
+        totalPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        totalPrice.HeaderText = "TOTAL PRICE"
+        totalPrice.MinimumWidth = 6
+        totalPrice.Name = "totalPrice"
+        totalPrice.ReadOnly = True
+        totalPrice.Width = 121
+        ' 
+        ' ColDel
+        ' 
+        ColDel.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.BackColor = Color.Teal
+        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = Color.White
+        ColDel.DefaultCellStyle = DataGridViewCellStyle2
+        ColDel.HeaderText = "ACTION"
+        ColDel.MinimumWidth = 6
+        ColDel.Name = "ColDel"
+        ColDel.ReadOnly = True
+        ColDel.ToolTipText = "DELETE"
+        ColDel.Width = 91
         ' 
         ' cancel_order
         ' 
@@ -133,10 +152,11 @@ Partial Class cancel_order
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Search As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_Search As TextBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewButtonColumn
+    Friend WithEvents OrderNo As DataGridViewTextBoxColumn
+    Friend WithEvents OrderDate As DataGridViewTextBoxColumn
+    Friend WithEvents totalPrice As DataGridViewTextBoxColumn
+    Friend WithEvents ColDel As DataGridViewTextBoxColumn
 End Class

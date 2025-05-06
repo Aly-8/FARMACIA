@@ -25,6 +25,14 @@ Partial Class Cashier
         components = New ComponentModel.Container()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
+        TableLayoutPanel1 = New TableLayoutPanel()
+        f7_logout = New Button()
+        F1_New = New Button()
+        f6_changepassword = New Button()
+        f5_remove = New Button()
+        f4_report = New Button()
+        f3_setdiscount = New Button()
+        f2_cancel = New Button()
         lbl_time = New Label()
         Label1 = New Label()
         Label2 = New Label()
@@ -36,14 +44,6 @@ Partial Class Cashier
         Label7 = New Label()
         Label6 = New Label()
         Label5 = New Label()
-        TableLayoutPanel1 = New TableLayoutPanel()
-        f7_logout = New Button()
-        F1_New = New Button()
-        f6_changepassword = New Button()
-        f5_remove = New Button()
-        f4_report = New Button()
-        f3_setdiscount = New Button()
-        f2_cancel = New Button()
         Panel3 = New Panel()
         lbl_subtotal = New Label()
         Label16 = New Label()
@@ -76,50 +76,174 @@ Partial Class Cashier
         Timer1 = New Timer(components)
         Timer2 = New Timer(components)
         Panel1.SuspendLayout()
-        Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
+        Panel2.SuspendLayout()
         Panel3.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
-        Panel1.Controls.Add(lbl_time)
-        Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(TableLayoutPanel1)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1271, 64)
         Panel1.TabIndex = 1
         ' 
+        ' TableLayoutPanel1
+        ' 
+        TableLayoutPanel1.ColumnCount = 7
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.Controls.Add(f7_logout, 6, 0)
+        TableLayoutPanel1.Controls.Add(F1_New, 0, 0)
+        TableLayoutPanel1.Controls.Add(f6_changepassword, 5, 0)
+        TableLayoutPanel1.Controls.Add(f5_remove, 4, 0)
+        TableLayoutPanel1.Controls.Add(f4_report, 3, 0)
+        TableLayoutPanel1.Controls.Add(f3_setdiscount, 2, 0)
+        TableLayoutPanel1.Controls.Add(f2_cancel, 1, 0)
+        TableLayoutPanel1.Dock = DockStyle.Top
+        TableLayoutPanel1.Location = New Point(0, 0)
+        TableLayoutPanel1.Name = "TableLayoutPanel1"
+        TableLayoutPanel1.RowCount = 1
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
+        TableLayoutPanel1.Size = New Size(1271, 58)
+        TableLayoutPanel1.TabIndex = 3
+        ' 
+        ' f7_logout
+        ' 
+        f7_logout.BackColor = Color.DarkSlateGray
+        f7_logout.Dock = DockStyle.Fill
+        f7_logout.FlatAppearance.BorderSize = 0
+        f7_logout.FlatStyle = FlatStyle.Flat
+        f7_logout.ForeColor = SystemColors.ButtonHighlight
+        f7_logout.Location = New Point(1089, 3)
+        f7_logout.Name = "f7_logout"
+        f7_logout.Size = New Size(179, 52)
+        f7_logout.TabIndex = 6
+        f7_logout.Text = "[ F7-Logout ]"
+        f7_logout.UseVisualStyleBackColor = False
+        ' 
+        ' F1_New
+        ' 
+        F1_New.BackColor = Color.CadetBlue
+        F1_New.Dock = DockStyle.Fill
+        F1_New.FlatAppearance.BorderSize = 0
+        F1_New.FlatStyle = FlatStyle.Flat
+        F1_New.ForeColor = SystemColors.ButtonHighlight
+        F1_New.Location = New Point(3, 3)
+        F1_New.Name = "F1_New"
+        F1_New.Size = New Size(175, 52)
+        F1_New.TabIndex = 0
+        F1_New.Text = "[ F1-New ]"
+        F1_New.UseVisualStyleBackColor = False
+        ' 
+        ' f6_changepassword
+        ' 
+        f6_changepassword.BackColor = Color.CadetBlue
+        f6_changepassword.Dock = DockStyle.Fill
+        f6_changepassword.FlatAppearance.BorderSize = 0
+        f6_changepassword.FlatStyle = FlatStyle.Flat
+        f6_changepassword.ForeColor = SystemColors.ButtonHighlight
+        f6_changepassword.Location = New Point(908, 3)
+        f6_changepassword.Name = "f6_changepassword"
+        f6_changepassword.Size = New Size(175, 52)
+        f6_changepassword.TabIndex = 5
+        f6_changepassword.Text = "[F6-Change Password]"
+        f6_changepassword.UseVisualStyleBackColor = False
+        ' 
+        ' f5_remove
+        ' 
+        f5_remove.BackColor = Color.CadetBlue
+        f5_remove.Dock = DockStyle.Fill
+        f5_remove.FlatAppearance.BorderSize = 0
+        f5_remove.FlatStyle = FlatStyle.Flat
+        f5_remove.ForeColor = SystemColors.ButtonHighlight
+        f5_remove.Location = New Point(727, 3)
+        f5_remove.Name = "f5_remove"
+        f5_remove.Size = New Size(175, 52)
+        f5_remove.TabIndex = 4
+        f5_remove.Text = "[ F5-Remove ]"
+        f5_remove.UseVisualStyleBackColor = False
+        ' 
+        ' f4_report
+        ' 
+        f4_report.BackColor = Color.CadetBlue
+        f4_report.Dock = DockStyle.Fill
+        f4_report.FlatAppearance.BorderSize = 0
+        f4_report.FlatStyle = FlatStyle.Flat
+        f4_report.ForeColor = SystemColors.ButtonHighlight
+        f4_report.Location = New Point(546, 3)
+        f4_report.Name = "f4_report"
+        f4_report.Size = New Size(175, 52)
+        f4_report.TabIndex = 3
+        f4_report.Text = "[ F4-Report ]"
+        f4_report.UseVisualStyleBackColor = False
+        ' 
+        ' f3_setdiscount
+        ' 
+        f3_setdiscount.BackColor = Color.CadetBlue
+        f3_setdiscount.Dock = DockStyle.Fill
+        f3_setdiscount.FlatAppearance.BorderSize = 0
+        f3_setdiscount.FlatStyle = FlatStyle.Flat
+        f3_setdiscount.ForeColor = SystemColors.ButtonHighlight
+        f3_setdiscount.Location = New Point(365, 3)
+        f3_setdiscount.Name = "f3_setdiscount"
+        f3_setdiscount.Size = New Size(175, 52)
+        f3_setdiscount.TabIndex = 2
+        f3_setdiscount.Text = "[ F3-Set Discount ]"
+        f3_setdiscount.UseVisualStyleBackColor = False
+        ' 
+        ' f2_cancel
+        ' 
+        f2_cancel.BackColor = Color.CadetBlue
+        f2_cancel.Dock = DockStyle.Fill
+        f2_cancel.FlatAppearance.BorderSize = 0
+        f2_cancel.FlatStyle = FlatStyle.Flat
+        f2_cancel.ForeColor = SystemColors.ButtonHighlight
+        f2_cancel.Location = New Point(184, 3)
+        f2_cancel.Name = "f2_cancel"
+        f2_cancel.Size = New Size(175, 52)
+        f2_cancel.TabIndex = 1
+        f2_cancel.Text = "[ F2-Cancel ]"
+        f2_cancel.UseVisualStyleBackColor = False
+        ' 
         ' lbl_time
         ' 
         lbl_time.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        lbl_time.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lbl_time.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_time.ForeColor = Color.MidnightBlue
-        lbl_time.Location = New Point(933, 6)
+        lbl_time.Location = New Point(670, 3)
         lbl_time.Name = "lbl_time"
-        lbl_time.Size = New Size(326, 48)
+        lbl_time.Size = New Size(252, 41)
         lbl_time.TabIndex = 37
         lbl_time.Text = "00.00"
         lbl_time.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' Label1
         ' 
+        Label1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.DarkCyan
-        Label1.Location = New Point(47, 5)
+        Label1.Location = New Point(1183, 3)
         Label1.Name = "Label1"
-        Label1.Size = New Size(58, 31)
+        Label1.Size = New Size(76, 41)
         Label1.TabIndex = 10
         Label1.Text = "POS"
         ' 
         ' Label2
         ' 
+        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label2.AutoSize = True
-        Label2.Location = New Point(11, 36)
+        Label2.Location = New Point(1131, 46)
         Label2.Name = "Label2"
         Label2.Size = New Size(128, 20)
         Label2.TabIndex = 7
@@ -128,6 +252,9 @@ Partial Class Cashier
         ' Panel2
         ' 
         Panel2.BackColor = Color.LightSteelBlue
+        Panel2.Controls.Add(Label1)
+        Panel2.Controls.Add(lbl_time)
+        Panel2.Controls.Add(Label2)
         Panel2.Controls.Add(lbl_date)
         Panel2.Controls.Add(dtp_OrderDate)
         Panel2.Controls.Add(txt_SearchProductCode)
@@ -146,9 +273,9 @@ Partial Class Cashier
         lbl_date.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lbl_date.Font = New Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_date.ForeColor = Color.MidnightBlue
-        lbl_date.Location = New Point(933, 3)
+        lbl_date.Location = New Point(670, 44)
         lbl_date.Name = "lbl_date"
-        lbl_date.Size = New Size(326, 31)
+        lbl_date.Size = New Size(252, 27)
         lbl_date.TabIndex = 37
         lbl_date.Text = "00.00"
         lbl_date.TextAlign = ContentAlignment.MiddleRight
@@ -205,130 +332,6 @@ Partial Class Cashier
         Label5.TabIndex = 13
         Label5.Text = "Order NO :"
         ' 
-        ' TableLayoutPanel1
-        ' 
-        TableLayoutPanel1.ColumnCount = 7
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857141F))
-        TableLayoutPanel1.Controls.Add(f7_logout, 6, 0)
-        TableLayoutPanel1.Controls.Add(F1_New, 0, 0)
-        TableLayoutPanel1.Controls.Add(f6_changepassword, 5, 0)
-        TableLayoutPanel1.Controls.Add(f5_remove, 4, 0)
-        TableLayoutPanel1.Controls.Add(f4_report, 3, 0)
-        TableLayoutPanel1.Controls.Add(f3_setdiscount, 2, 0)
-        TableLayoutPanel1.Controls.Add(f2_cancel, 1, 0)
-        TableLayoutPanel1.Dock = DockStyle.Bottom
-        TableLayoutPanel1.Location = New Point(0, 540)
-        TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.RowCount = 1
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
-        TableLayoutPanel1.Size = New Size(1271, 40)
-        TableLayoutPanel1.TabIndex = 3
-        ' 
-        ' f7_logout
-        ' 
-        f7_logout.BackColor = Color.DarkSlateGray
-        f7_logout.Dock = DockStyle.Bottom
-        f7_logout.FlatAppearance.BorderSize = 0
-        f7_logout.FlatStyle = FlatStyle.Flat
-        f7_logout.ForeColor = SystemColors.ButtonHighlight
-        f7_logout.Location = New Point(1089, 3)
-        f7_logout.Name = "f7_logout"
-        f7_logout.Size = New Size(179, 34)
-        f7_logout.TabIndex = 6
-        f7_logout.Text = "[ F7-Logout ]"
-        f7_logout.UseVisualStyleBackColor = False
-        ' 
-        ' F1_New
-        ' 
-        F1_New.BackColor = Color.CadetBlue
-        F1_New.Dock = DockStyle.Bottom
-        F1_New.FlatAppearance.BorderSize = 0
-        F1_New.FlatStyle = FlatStyle.Flat
-        F1_New.ForeColor = SystemColors.ButtonHighlight
-        F1_New.Location = New Point(3, 3)
-        F1_New.Name = "F1_New"
-        F1_New.Size = New Size(175, 34)
-        F1_New.TabIndex = 0
-        F1_New.Text = "[ F1-New ]"
-        F1_New.UseVisualStyleBackColor = False
-        ' 
-        ' f6_changepassword
-        ' 
-        f6_changepassword.BackColor = Color.CadetBlue
-        f6_changepassword.Dock = DockStyle.Bottom
-        f6_changepassword.FlatAppearance.BorderSize = 0
-        f6_changepassword.FlatStyle = FlatStyle.Flat
-        f6_changepassword.ForeColor = SystemColors.ButtonHighlight
-        f6_changepassword.Location = New Point(908, 3)
-        f6_changepassword.Name = "f6_changepassword"
-        f6_changepassword.Size = New Size(175, 34)
-        f6_changepassword.TabIndex = 5
-        f6_changepassword.Text = "[F6-Change Password]"
-        f6_changepassword.UseVisualStyleBackColor = False
-        ' 
-        ' f5_remove
-        ' 
-        f5_remove.BackColor = Color.CadetBlue
-        f5_remove.Dock = DockStyle.Bottom
-        f5_remove.FlatAppearance.BorderSize = 0
-        f5_remove.FlatStyle = FlatStyle.Flat
-        f5_remove.ForeColor = SystemColors.ButtonHighlight
-        f5_remove.Location = New Point(727, 3)
-        f5_remove.Name = "f5_remove"
-        f5_remove.Size = New Size(175, 34)
-        f5_remove.TabIndex = 4
-        f5_remove.Text = "[ F5-Remove ]"
-        f5_remove.UseVisualStyleBackColor = False
-        ' 
-        ' f4_report
-        ' 
-        f4_report.BackColor = Color.CadetBlue
-        f4_report.Dock = DockStyle.Bottom
-        f4_report.FlatAppearance.BorderSize = 0
-        f4_report.FlatStyle = FlatStyle.Flat
-        f4_report.ForeColor = SystemColors.ButtonHighlight
-        f4_report.Location = New Point(546, 3)
-        f4_report.Name = "f4_report"
-        f4_report.Size = New Size(175, 34)
-        f4_report.TabIndex = 3
-        f4_report.Text = "[ F4-Report ]"
-        f4_report.UseVisualStyleBackColor = False
-        ' 
-        ' f3_setdiscount
-        ' 
-        f3_setdiscount.BackColor = Color.CadetBlue
-        f3_setdiscount.Dock = DockStyle.Bottom
-        f3_setdiscount.FlatAppearance.BorderSize = 0
-        f3_setdiscount.FlatStyle = FlatStyle.Flat
-        f3_setdiscount.ForeColor = SystemColors.ButtonHighlight
-        f3_setdiscount.Location = New Point(365, 3)
-        f3_setdiscount.Name = "f3_setdiscount"
-        f3_setdiscount.Size = New Size(175, 34)
-        f3_setdiscount.TabIndex = 2
-        f3_setdiscount.Text = "[ F3-Set Discount ]"
-        f3_setdiscount.UseVisualStyleBackColor = False
-        ' 
-        ' f2_cancel
-        ' 
-        f2_cancel.BackColor = Color.CadetBlue
-        f2_cancel.Dock = DockStyle.Bottom
-        f2_cancel.FlatAppearance.BorderSize = 0
-        f2_cancel.FlatStyle = FlatStyle.Flat
-        f2_cancel.ForeColor = SystemColors.ButtonHighlight
-        f2_cancel.Location = New Point(184, 3)
-        f2_cancel.Name = "f2_cancel"
-        f2_cancel.Size = New Size(175, 34)
-        f2_cancel.TabIndex = 1
-        f2_cancel.Text = "[ F2-Cancel ]"
-        f2_cancel.UseVisualStyleBackColor = False
-        ' 
         ' Panel3
         ' 
         Panel3.Controls.Add(lbl_subtotal)
@@ -353,14 +356,14 @@ Partial Class Cashier
         Panel3.Dock = DockStyle.Right
         Panel3.Location = New Point(922, 134)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(349, 406)
+        Panel3.Size = New Size(349, 446)
         Panel3.TabIndex = 4
         ' 
         ' lbl_subtotal
         ' 
         lbl_subtotal.Anchor = AnchorStyles.Right
         lbl_subtotal.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_subtotal.Location = New Point(189, 90)
+        lbl_subtotal.Location = New Point(189, 110)
         lbl_subtotal.Name = "lbl_subtotal"
         lbl_subtotal.Size = New Size(148, 30)
         lbl_subtotal.TabIndex = 36
@@ -371,7 +374,7 @@ Partial Class Cashier
         ' 
         Label16.Anchor = AnchorStyles.Right
         Label16.AutoSize = True
-        Label16.Location = New Point(97, 96)
+        Label16.Location = New Point(97, 116)
         Label16.Name = "Label16"
         Label16.Size = New Size(72, 20)
         Label16.TabIndex = 35
@@ -382,7 +385,7 @@ Partial Class Cashier
         cbo_paymentMode.Anchor = AnchorStyles.Right
         cbo_paymentMode.FormattingEnabled = True
         cbo_paymentMode.Items.AddRange(New Object() {"CASH", "DEBIT CARD"})
-        cbo_paymentMode.Location = New Point(189, 248)
+        cbo_paymentMode.Location = New Point(189, 268)
         cbo_paymentMode.Name = "cbo_paymentMode"
         cbo_paymentMode.Size = New Size(148, 28)
         cbo_paymentMode.TabIndex = 34
@@ -390,7 +393,7 @@ Partial Class Cashier
         ' txt_amountReceived
         ' 
         txt_amountReceived.Anchor = AnchorStyles.Right
-        txt_amountReceived.Location = New Point(189, 292)
+        txt_amountReceived.Location = New Point(189, 312)
         txt_amountReceived.Name = "txt_amountReceived"
         txt_amountReceived.Size = New Size(148, 27)
         txt_amountReceived.TabIndex = 33
@@ -399,7 +402,7 @@ Partial Class Cashier
         ' 
         lbl_Change.Anchor = AnchorStyles.Right
         lbl_Change.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_Change.Location = New Point(189, 330)
+        lbl_Change.Location = New Point(189, 350)
         lbl_Change.Name = "lbl_Change"
         lbl_Change.Size = New Size(148, 30)
         lbl_Change.TabIndex = 32
@@ -411,7 +414,7 @@ Partial Class Cashier
         lbl_GrandTotal.Anchor = AnchorStyles.Right
         lbl_GrandTotal.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_GrandTotal.ForeColor = Color.SteelBlue
-        lbl_GrandTotal.Location = New Point(189, 205)
+        lbl_GrandTotal.Location = New Point(189, 225)
         lbl_GrandTotal.Name = "lbl_GrandTotal"
         lbl_GrandTotal.Size = New Size(148, 30)
         lbl_GrandTotal.TabIndex = 30
@@ -422,7 +425,7 @@ Partial Class Cashier
         ' 
         lbl_Discount.Anchor = AnchorStyles.Right
         lbl_Discount.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_Discount.Location = New Point(189, 164)
+        lbl_Discount.Location = New Point(189, 184)
         lbl_Discount.Name = "lbl_Discount"
         lbl_Discount.Size = New Size(148, 30)
         lbl_Discount.TabIndex = 29
@@ -433,7 +436,7 @@ Partial Class Cashier
         ' 
         lbl_TotalPrice.Anchor = AnchorStyles.Right
         lbl_TotalPrice.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_TotalPrice.Location = New Point(189, 126)
+        lbl_TotalPrice.Location = New Point(189, 146)
         lbl_TotalPrice.Name = "lbl_TotalPrice"
         lbl_TotalPrice.Size = New Size(148, 30)
         lbl_TotalPrice.TabIndex = 28
@@ -444,7 +447,7 @@ Partial Class Cashier
         ' 
         lbl_noOfItems.Anchor = AnchorStyles.Right
         lbl_noOfItems.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lbl_noOfItems.Location = New Point(189, 54)
+        lbl_noOfItems.Location = New Point(189, 74)
         lbl_noOfItems.Name = "lbl_noOfItems"
         lbl_noOfItems.Size = New Size(148, 30)
         lbl_noOfItems.TabIndex = 27
@@ -458,7 +461,7 @@ Partial Class Cashier
         btn_Pay.FlatAppearance.BorderSize = 0
         btn_Pay.FlatStyle = FlatStyle.Flat
         btn_Pay.ForeColor = SystemColors.ButtonHighlight
-        btn_Pay.Location = New Point(0, 372)
+        btn_Pay.Location = New Point(0, 412)
         btn_Pay.Name = "btn_Pay"
         btn_Pay.Size = New Size(349, 34)
         btn_Pay.TabIndex = 26
@@ -469,7 +472,7 @@ Partial Class Cashier
         ' 
         Label15.Anchor = AnchorStyles.Right
         Label15.AutoSize = True
-        Label15.Location = New Point(108, 336)
+        Label15.Location = New Point(108, 356)
         Label15.Name = "Label15"
         Label15.Size = New Size(61, 20)
         Label15.TabIndex = 25
@@ -479,7 +482,7 @@ Partial Class Cashier
         ' 
         Label14.Anchor = AnchorStyles.Right
         Label14.AutoSize = True
-        Label14.Location = New Point(40, 295)
+        Label14.Location = New Point(40, 315)
         Label14.Name = "Label14"
         Label14.Size = New Size(129, 20)
         Label14.TabIndex = 24
@@ -489,7 +492,7 @@ Partial Class Cashier
         ' 
         Label13.Anchor = AnchorStyles.Right
         Label13.AutoSize = True
-        Label13.Location = New Point(56, 251)
+        Label13.Location = New Point(56, 271)
         Label13.Name = "Label13"
         Label13.Size = New Size(113, 20)
         Label13.TabIndex = 23
@@ -499,7 +502,7 @@ Partial Class Cashier
         ' 
         Label12.Anchor = AnchorStyles.Right
         Label12.AutoSize = True
-        Label12.Location = New Point(81, 211)
+        Label12.Location = New Point(81, 231)
         Label12.Name = "Label12"
         Label12.Size = New Size(88, 20)
         Label12.TabIndex = 22
@@ -509,7 +512,7 @@ Partial Class Cashier
         ' 
         txt_discount.Anchor = AnchorStyles.Right
         txt_discount.BorderStyle = BorderStyle.None
-        txt_discount.Location = New Point(121, 170)
+        txt_discount.Location = New Point(121, 190)
         txt_discount.Name = "txt_discount"
         txt_discount.ReadOnly = True
         txt_discount.Size = New Size(48, 20)
@@ -519,7 +522,7 @@ Partial Class Cashier
         ' 
         Label11.Anchor = AnchorStyles.Right
         Label11.AutoSize = True
-        Label11.Location = New Point(29, 170)
+        Label11.Location = New Point(29, 190)
         Label11.Name = "Label11"
         Label11.Size = New Size(86, 20)
         Label11.TabIndex = 21
@@ -529,7 +532,7 @@ Partial Class Cashier
         ' 
         Label10.Anchor = AnchorStyles.Right
         Label10.AutoSize = True
-        Label10.Location = New Point(89, 132)
+        Label10.Location = New Point(89, 152)
         Label10.Name = "Label10"
         Label10.Size = New Size(80, 20)
         Label10.TabIndex = 20
@@ -539,7 +542,7 @@ Partial Class Cashier
         ' 
         Label9.Anchor = AnchorStyles.Right
         Label9.AutoSize = True
-        Label9.Location = New Point(77, 60)
+        Label9.Location = New Point(77, 80)
         Label9.Name = "Label9"
         Label9.Size = New Size(92, 20)
         Label9.TabIndex = 19
@@ -550,7 +553,7 @@ Partial Class Cashier
         lbl_OverAllGrandTotal.Anchor = AnchorStyles.Right
         lbl_OverAllGrandTotal.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lbl_OverAllGrandTotal.ForeColor = Color.Teal
-        lbl_OverAllGrandTotal.Location = New Point(11, 3)
+        lbl_OverAllGrandTotal.Location = New Point(11, 23)
         lbl_OverAllGrandTotal.Name = "lbl_OverAllGrandTotal"
         lbl_OverAllGrandTotal.Size = New Size(326, 38)
         lbl_OverAllGrandTotal.TabIndex = 7
@@ -579,7 +582,7 @@ Partial Class Cashier
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(922, 406)
+        DataGridView1.Size = New Size(922, 446)
         DataGridView1.TabIndex = 5
         ' 
         ' Column1
@@ -670,7 +673,6 @@ Partial Class Cashier
         ClientSize = New Size(1271, 580)
         Controls.Add(DataGridView1)
         Controls.Add(Panel3)
-        Controls.Add(TableLayoutPanel1)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -680,10 +682,9 @@ Partial Class Cashier
         Text = "POS and Inventory Management System"
         WindowState = FormWindowState.Maximized
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
+        TableLayoutPanel1.ResumeLayout(False)
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
-        TableLayoutPanel1.ResumeLayout(False)
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
