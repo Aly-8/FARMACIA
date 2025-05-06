@@ -128,6 +128,8 @@ Partial Class cancel_order
         DataGridViewCellStyle2.BackColor = Color.Teal
         DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = Color.CadetBlue
+        DataGridViewCellStyle2.SelectionForeColor = Color.White
         ColDel.DefaultCellStyle = DataGridViewCellStyle2
         ColDel.HeaderText = "ACTION"
         ColDel.MinimumWidth = 6
