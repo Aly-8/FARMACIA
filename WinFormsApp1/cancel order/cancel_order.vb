@@ -45,22 +45,23 @@ Public Class cancel_order
         Try
             If e.RowIndex >= 0 AndAlso e.ColumnIndex = DataGridView1.Columns("ColDel").Index Then
                 If MsgBox("Are you sure to delete this order?", vbQuestion + vbYesNo) = vbYes Then
-                    Dim orderNo As Object = DataGridView1.Rows(e.RowIndex).Cells("ORDER NO").Value
-                    If orderNo IsNot Nothing Then
-                        Using cmd As New MySqlCommand("DELETE FROM `tblpos` WHERE OrderNo = @OrderNo", conn)
-                            cmd.Parameters.AddWithValue("@OrderNo", orderNo)
-                            If conn.State = ConnectionState.Closed Then conn.Open()
-                            Dim i As Integer = cmd.ExecuteNonQuery()
-                            If i > 0 Then
-                                MsgBox("Order deleted successfully!", vbInformation)
-                                Load_cancel_order()
-                            Else
-                                MsgBox("Failed to delete order!", vbExclamation)
-                            End If
-                        End Using
-                    Else
+                    Dim orderNo As Object = DataGridView1.Rows(e.RowIndex).Cells("OrderNo").Value
+                    If orderNo Is Nothing OrElse String.IsNullOrEmpty(orderNo.ToString()) Then
                         MsgBox("Order number is missing. Cannot delete the order.", vbExclamation)
+                        Return
                     End If
+
+                    Using cmd As New MySqlCommand("DELETE FROM `tblpos` WHERE OrderNo = @OrderNo", conn)
+                        cmd.Parameters.AddWithValue("@OrderNo", orderNo.ToString())
+                        If conn.State = ConnectionState.Closed Then conn.Open()
+                        Dim i As Integer = cmd.ExecuteNonQuery()
+                        If i > 0 Then
+                            MsgBox("Order deleted successfully!", vbInformation)
+                            Load_cancel_order()
+                        Else
+                            MsgBox("Failed to delete order!", vbExclamation)
+                        End If
+                    End Using
                 End If
             End If
         Catch ex As Exception
