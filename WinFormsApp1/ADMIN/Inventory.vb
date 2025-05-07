@@ -133,11 +133,13 @@ Public Class Inventory 'manageproduct
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-        Finally
-            conn.Close()
-            load_product()
         End Try
         clear()
+        conn.Close()
+        load_product()
+        Dashboard.Load_NoofProducts()
+
+
 
     End Sub
 
@@ -211,6 +213,7 @@ Public Class Inventory 'manageproduct
         clear()
         txt_SearchProductCode.Clear()
         load_product()
+        Dashboard.Load_NoofProducts()
     End Sub
 
     Private Sub delete_btn_Click(sender As Object, e As EventArgs) Handles delete_btn.Click
@@ -234,6 +237,7 @@ Public Class Inventory 'manageproduct
             clear()
             txt_SearchProductCode.Clear()
             load_product()
+            Dashboard.Load_NoofProducts()
         Else
             Return
         End If

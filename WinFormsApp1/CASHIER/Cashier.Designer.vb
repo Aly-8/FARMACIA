@@ -54,7 +54,7 @@ Partial Class Cashier
         lbl_Discount = New Label()
         lbl_TotalPrice = New Label()
         lbl_noOfItems = New Label()
-        btn_Pay = New Button()
+        F9_Pay = New Button()
         Label15 = New Label()
         Label14 = New Label()
         Label13 = New Label()
@@ -343,7 +343,7 @@ Partial Class Cashier
         Panel3.Controls.Add(lbl_Discount)
         Panel3.Controls.Add(lbl_TotalPrice)
         Panel3.Controls.Add(lbl_noOfItems)
-        Panel3.Controls.Add(btn_Pay)
+        Panel3.Controls.Add(F9_Pay)
         Panel3.Controls.Add(Label15)
         Panel3.Controls.Add(Label14)
         Panel3.Controls.Add(Label13)
@@ -454,19 +454,19 @@ Partial Class Cashier
         lbl_noOfItems.Text = "00.00"
         lbl_noOfItems.TextAlign = ContentAlignment.MiddleRight
         ' 
-        ' btn_Pay
+        ' F9_Pay
         ' 
-        btn_Pay.BackColor = Color.CadetBlue
-        btn_Pay.Dock = DockStyle.Bottom
-        btn_Pay.FlatAppearance.BorderSize = 0
-        btn_Pay.FlatStyle = FlatStyle.Flat
-        btn_Pay.ForeColor = SystemColors.ButtonHighlight
-        btn_Pay.Location = New Point(0, 412)
-        btn_Pay.Name = "btn_Pay"
-        btn_Pay.Size = New Size(349, 34)
-        btn_Pay.TabIndex = 26
-        btn_Pay.Text = "[ F9 - PAY]"
-        btn_Pay.UseVisualStyleBackColor = False
+        F9_Pay.BackColor = Color.CadetBlue
+        F9_Pay.Dock = DockStyle.Bottom
+        F9_Pay.FlatAppearance.BorderSize = 0
+        F9_Pay.FlatStyle = FlatStyle.Flat
+        F9_Pay.ForeColor = SystemColors.ButtonHighlight
+        F9_Pay.Location = New Point(0, 412)
+        F9_Pay.Name = "F9_Pay"
+        F9_Pay.Size = New Size(349, 34)
+        F9_Pay.TabIndex = 26
+        F9_Pay.Text = "[ F9 - PAY]"
+        F9_Pay.UseVisualStyleBackColor = False
         ' 
         ' Label15
         ' 
@@ -720,7 +720,7 @@ Partial Class Cashier
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents btn_Pay As Button
+    Friend WithEvents F9_Pay As Button
     Friend WithEvents lbl_noOfItems As Label
     Friend WithEvents lbl_Change As Label
     Friend WithEvents lbl_GrandTotal As Label

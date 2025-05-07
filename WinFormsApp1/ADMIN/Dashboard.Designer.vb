@@ -35,24 +35,29 @@ Partial Class Dashboard
         inventory_btn = New Button()
         Dashboard_btn = New Button()
         Panel3 = New Panel()
+        DataGridView1 = New DataGridView()
+        Column1 = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
         Panel8 = New Panel()
-        no_ofusers_lbl = New Label()
+        No_OfUsers_lbl = New Label()
         Label10 = New Label()
         Label11 = New Label()
         Panel6 = New Panel()
-        no_monthlysales_lbl = New Label()
+        No_MonthlySales_lbl = New Label()
         Label5 = New Label()
         Label6 = New Label()
         Panel9 = New Panel()
-        numberofproduct_lbl = New Label()
+        NumberOfProduct_lbl = New Label()
         Label12 = New Label()
         Label13 = New Label()
         Panel5 = New Panel()
-        no_todaysales_lbl = New Label()
+        No_TodaySales_lbl = New Label()
         Label3 = New Label()
         Label4 = New Label()
         Panel7 = New Panel()
-        monthlysales_lbl = New Label()
+        MonthlySales_lbl = New Label()
         Label15 = New Label()
         Label7 = New Label()
         Label9 = New Label()
@@ -61,10 +66,12 @@ Partial Class Dashboard
         Label14 = New Label()
         Label2 = New Label()
         Label8 = New Label()
+        MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
         Panel1.SuspendLayout()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         Panel3.SuspendLayout()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         Panel8.SuspendLayout()
         Panel6.SuspendLayout()
         Panel9.SuspendLayout()
@@ -219,6 +226,7 @@ Partial Class Dashboard
         ' Panel3
         ' 
         Panel3.BackColor = Color.LightBlue
+        Panel3.Controls.Add(DataGridView1)
         Panel3.Controls.Add(Panel8)
         Panel3.Controls.Add(Panel6)
         Panel3.Controls.Add(Panel9)
@@ -231,10 +239,55 @@ Partial Class Dashboard
         Panel3.Size = New Size(1073, 409)
         Panel3.TabIndex = 17
         ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.AllowUserToAddRows = False
+        DataGridView1.AllowUserToDeleteRows = False
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4})
+        DataGridView1.Location = New Point(10, 8)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.ReadOnly = True
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(11, 12)
+        DataGridView1.TabIndex = 18
+        ' 
+        ' Column1
+        ' 
+        Column1.HeaderText = "OrderNo"
+        Column1.MinimumWidth = 6
+        Column1.Name = "Column1"
+        Column1.ReadOnly = True
+        Column1.Width = 125
+        ' 
+        ' Column2
+        ' 
+        Column2.HeaderText = "OrderDate"
+        Column2.MinimumWidth = 6
+        Column2.Name = "Column2"
+        Column2.ReadOnly = True
+        Column2.Width = 125
+        ' 
+        ' Column3
+        ' 
+        Column3.HeaderText = "OrderMonth"
+        Column3.MinimumWidth = 6
+        Column3.Name = "Column3"
+        Column3.ReadOnly = True
+        Column3.Width = 125
+        ' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "GrandTotal"
+        Column4.MinimumWidth = 6
+        Column4.Name = "Column4"
+        Column4.ReadOnly = True
+        Column4.Width = 125
+        ' 
         ' Panel8
         ' 
         Panel8.BackColor = Color.Azure
-        Panel8.Controls.Add(no_ofusers_lbl)
+        Panel8.Controls.Add(No_OfUsers_lbl)
         Panel8.Controls.Add(Label10)
         Panel8.Controls.Add(Label11)
         Panel8.Location = New Point(758, 227)
@@ -242,15 +295,15 @@ Partial Class Dashboard
         Panel8.Size = New Size(215, 104)
         Panel8.TabIndex = 8
         ' 
-        ' no_ofusers_lbl
+        ' No_OfUsers_lbl
         ' 
-        no_ofusers_lbl.AutoSize = True
-        no_ofusers_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        no_ofusers_lbl.Location = New Point(13, 46)
-        no_ofusers_lbl.Name = "no_ofusers_lbl"
-        no_ofusers_lbl.Size = New Size(33, 38)
-        no_ofusers_lbl.TabIndex = 15
-        no_ofusers_lbl.Text = "0"
+        No_OfUsers_lbl.AutoSize = True
+        No_OfUsers_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        No_OfUsers_lbl.Location = New Point(13, 46)
+        No_OfUsers_lbl.Name = "No_OfUsers_lbl"
+        No_OfUsers_lbl.Size = New Size(33, 38)
+        No_OfUsers_lbl.TabIndex = 15
+        No_OfUsers_lbl.Text = "0"
         ' 
         ' Label10
         ' 
@@ -275,7 +328,7 @@ Partial Class Dashboard
         ' Panel6
         ' 
         Panel6.BackColor = Color.Azure
-        Panel6.Controls.Add(no_monthlysales_lbl)
+        Panel6.Controls.Add(No_MonthlySales_lbl)
         Panel6.Controls.Add(Label5)
         Panel6.Controls.Add(Label6)
         Panel6.Location = New Point(422, 227)
@@ -283,15 +336,15 @@ Partial Class Dashboard
         Panel6.Size = New Size(215, 104)
         Panel6.TabIndex = 8
         ' 
-        ' no_monthlysales_lbl
+        ' No_MonthlySales_lbl
         ' 
-        no_monthlysales_lbl.AutoSize = True
-        no_monthlysales_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        no_monthlysales_lbl.Location = New Point(15, 46)
-        no_monthlysales_lbl.Name = "no_monthlysales_lbl"
-        no_monthlysales_lbl.Size = New Size(33, 38)
-        no_monthlysales_lbl.TabIndex = 14
-        no_monthlysales_lbl.Text = "0"
+        No_MonthlySales_lbl.AutoSize = True
+        No_MonthlySales_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        No_MonthlySales_lbl.Location = New Point(15, 46)
+        No_MonthlySales_lbl.Name = "No_MonthlySales_lbl"
+        No_MonthlySales_lbl.Size = New Size(33, 38)
+        No_MonthlySales_lbl.TabIndex = 14
+        No_MonthlySales_lbl.Text = "0"
         ' 
         ' Label5
         ' 
@@ -316,7 +369,7 @@ Partial Class Dashboard
         ' Panel9
         ' 
         Panel9.BackColor = Color.Azure
-        Panel9.Controls.Add(numberofproduct_lbl)
+        Panel9.Controls.Add(NumberOfProduct_lbl)
         Panel9.Controls.Add(Label12)
         Panel9.Controls.Add(Label13)
         Panel9.Location = New Point(758, 72)
@@ -324,15 +377,15 @@ Partial Class Dashboard
         Panel9.Size = New Size(215, 104)
         Panel9.TabIndex = 7
         ' 
-        ' numberofproduct_lbl
+        ' NumberOfProduct_lbl
         ' 
-        numberofproduct_lbl.AutoSize = True
-        numberofproduct_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        numberofproduct_lbl.Location = New Point(13, 45)
-        numberofproduct_lbl.Name = "numberofproduct_lbl"
-        numberofproduct_lbl.Size = New Size(33, 38)
-        numberofproduct_lbl.TabIndex = 12
-        numberofproduct_lbl.Text = "0"
+        NumberOfProduct_lbl.AutoSize = True
+        NumberOfProduct_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        NumberOfProduct_lbl.Location = New Point(13, 45)
+        NumberOfProduct_lbl.Name = "NumberOfProduct_lbl"
+        NumberOfProduct_lbl.Size = New Size(33, 38)
+        NumberOfProduct_lbl.TabIndex = 12
+        NumberOfProduct_lbl.Text = "0"
         ' 
         ' Label12
         ' 
@@ -357,7 +410,7 @@ Partial Class Dashboard
         ' Panel5
         ' 
         Panel5.BackColor = Color.Azure
-        Panel5.Controls.Add(no_todaysales_lbl)
+        Panel5.Controls.Add(No_TodaySales_lbl)
         Panel5.Controls.Add(Label3)
         Panel5.Controls.Add(Label4)
         Panel5.Location = New Point(91, 227)
@@ -365,15 +418,15 @@ Partial Class Dashboard
         Panel5.Size = New Size(215, 104)
         Panel5.TabIndex = 6
         ' 
-        ' no_todaysales_lbl
+        ' No_TodaySales_lbl
         ' 
-        no_todaysales_lbl.AutoSize = True
-        no_todaysales_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        no_todaysales_lbl.Location = New Point(15, 46)
-        no_todaysales_lbl.Name = "no_todaysales_lbl"
-        no_todaysales_lbl.Size = New Size(33, 38)
-        no_todaysales_lbl.TabIndex = 13
-        no_todaysales_lbl.Text = "0"
+        No_TodaySales_lbl.AutoSize = True
+        No_TodaySales_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        No_TodaySales_lbl.Location = New Point(15, 46)
+        No_TodaySales_lbl.Name = "No_TodaySales_lbl"
+        No_TodaySales_lbl.Size = New Size(33, 38)
+        No_TodaySales_lbl.TabIndex = 13
+        No_TodaySales_lbl.Text = "0"
         ' 
         ' Label3
         ' 
@@ -398,7 +451,7 @@ Partial Class Dashboard
         ' Panel7
         ' 
         Panel7.BackColor = Color.Azure
-        Panel7.Controls.Add(monthlysales_lbl)
+        Panel7.Controls.Add(MonthlySales_lbl)
         Panel7.Controls.Add(Label15)
         Panel7.Controls.Add(Label7)
         Panel7.Controls.Add(Label9)
@@ -407,15 +460,15 @@ Partial Class Dashboard
         Panel7.Size = New Size(215, 104)
         Panel7.TabIndex = 7
         ' 
-        ' monthlysales_lbl
+        ' MonthlySales_lbl
         ' 
-        monthlysales_lbl.AutoSize = True
-        monthlysales_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        monthlysales_lbl.Location = New Point(54, 45)
-        monthlysales_lbl.Name = "monthlysales_lbl"
-        monthlysales_lbl.Size = New Size(89, 38)
-        monthlysales_lbl.TabIndex = 11
-        monthlysales_lbl.Text = "00.00"
+        MonthlySales_lbl.AutoSize = True
+        MonthlySales_lbl.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        MonthlySales_lbl.Location = New Point(54, 45)
+        MonthlySales_lbl.Name = "MonthlySales_lbl"
+        MonthlySales_lbl.Size = New Size(89, 38)
+        MonthlySales_lbl.TabIndex = 11
+        MonthlySales_lbl.Text = "00.00"
         ' 
         ' Label15
         ' 
@@ -499,6 +552,13 @@ Partial Class Dashboard
         Label8.TabIndex = 1
         Label8.Text = "_____________________________"
         ' 
+        ' MySqlCommand1
+        ' 
+        MySqlCommand1.CacheAge = 0
+        MySqlCommand1.Connection = Nothing
+        MySqlCommand1.EnableCaching = False
+        MySqlCommand1.Transaction = Nothing
+        ' 
         ' Dashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -519,6 +579,7 @@ Partial Class Dashboard
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         Panel3.ResumeLayout(False)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         Panel8.ResumeLayout(False)
         Panel8.PerformLayout()
         Panel6.ResumeLayout(False)
@@ -565,12 +626,18 @@ Partial Class Dashboard
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents TodaySales_lbl As Label
-    Friend WithEvents numberofproduct_lbl As Label
-    Friend WithEvents monthlysales_lbl As Label
-    Friend WithEvents no_ofusers_lbl As Label
-    Friend WithEvents no_monthlysales_lbl As Label
-    Friend WithEvents no_todaysales_lbl As Label
+    Friend WithEvents NumberOfProduct_lbl As Label
+    Friend WithEvents MonthlySales_lbl As Label
+    Friend WithEvents No_OfUsers_lbl As Label
+    Friend WithEvents No_MonthlySales_lbl As Label
+    Friend WithEvents No_TodaySales_lbl As Label
     Friend WithEvents fdg As PictureBox
     Friend WithEvents Logout_btn As Button
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
 
 End Class

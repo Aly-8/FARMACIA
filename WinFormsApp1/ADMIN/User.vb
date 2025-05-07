@@ -44,6 +44,7 @@ Public Class User
             End If
         End Try
         clear()
+        Dashboard.Load_NoofUser()
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint

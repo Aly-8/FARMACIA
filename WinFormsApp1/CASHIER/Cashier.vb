@@ -1,14 +1,15 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Cashier
 
-    Private Sub Cashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Cashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load, MyBase.Load
         dbconn()
         DataGridView1.RowTemplate.Height = 30
         txt_SearchProductCode.Focus()
         total()
-        btn_Pay.Enabled = False
+        F9_Pay.Enabled = False
         load_discount()
         txt_OrderNo.Text = GetOrderNo()
+        KeyPreview = True
     End Sub
 
     Public Sub ADDLIST()
@@ -76,7 +77,7 @@ Public Class Cashier
         cancel_order.ShowDialog()
     End Sub
 
-    Private Sub txt_SearchProductCode_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_SearchProductCode.KeyDown
+    Private Sub txt_SearchProductCode_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_SearchProductCode.KeyDown, F9_Pay.KeyDown
         If Not String.IsNullOrEmpty(txt_SearchProductCode.Text) AndAlso e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             ADDLIST()
@@ -115,7 +116,7 @@ Public Class Cashier
             lbl_Change.Text = "0.00"
         End Try
 
-        btn_Pay.Enabled = True
+        F9_Pay.Enabled = True
 
     End Sub
 
@@ -252,9 +253,11 @@ Public Class Cashier
         cbo_paymentMode.SelectedIndex = -1
         txt_amountReceived.Clear()
     End Sub
-    Private Sub btn_Pay_Click(sender As Object, e As EventArgs) Handles btn_Pay.Click
+    Private Sub btn_Pay_Click(sender As Object, e As EventArgs) Handles F9_Pay.Click
         Save_Order()
         txt_SearchProductCode.Focus()
+        Dashboard.Load_MonthlySales()
+        Dashboard.Load_todaySale()
     End Sub
 
     Private Sub F1_New_Click(sender As Object, e As EventArgs) Handles F1_New.Click
@@ -279,5 +282,23 @@ Public Class Cashier
 
     Private Sub f4_report_Click(sender As Object, e As EventArgs) Handles f4_report.Click
         Cashier_SalesReport.ShowDialog()
+    End Sub
+
+    Private Sub Dashboard_Load(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If (e.KeyCode = Keys.F1) Then
+            F1_New_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F2) Then
+            f2_cancel_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F3) Then
+            f3_setdiscount_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F4) Then
+            f4_report_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F5) Then
+            f5_remove_Click(sender, e)
+        ElseIf (e.KeyCode = Keys.F6) Then
+            f6_changepassword_Click(sender, e
+        ElseIf (e.KeyCode = Keys.F9) Then
+            btn_Pay_Click(sender, e)
+        End If
     End Sub
 End Class

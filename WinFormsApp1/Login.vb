@@ -42,6 +42,7 @@ Public Class Login
                     ElseIf UCase(Role) = "CASHIER" Then
                         Me.Hide()
                         Cashier.Show()
+
                     End If
                 End If
             Else

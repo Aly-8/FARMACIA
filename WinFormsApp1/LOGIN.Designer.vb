@@ -31,6 +31,7 @@ Partial Class Login
         Label2 = New Label()
         Txt_Password = New TextBox()
         Txt_Username = New TextBox()
+        lbl_login = New Label()
         CType(fdg, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
@@ -135,12 +136,25 @@ Partial Class Login
         Txt_Username.TabIndex = 0
         Txt_Username.TextAlign = HorizontalAlignment.Center
         ' 
+        ' lbl_login
+        ' 
+        lbl_login.AutoSize = True
+        lbl_login.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lbl_login.ForeColor = Color.Honeydew
+        lbl_login.Location = New Point(136, 89)
+        lbl_login.Name = "lbl_login"
+        lbl_login.Size = New Size(201, 47)
+        lbl_login.TabIndex = 8
+        lbl_login.Text = "LOGIN HERE!"
+        lbl_login.UseCompatibleTextRendering = True
+        ' 
         ' Login
         ' 
         AutoScaleMode = AutoScaleMode.None
         BackColor = Color.CadetBlue
         ClientSize = New Size(467, 464)
         ControlBox = False
+        Controls.Add(lbl_login)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         ForeColor = Color.LightSeaGreen
@@ -153,6 +167,7 @@ Partial Class Login
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents Exit_btn As Button
@@ -164,4 +179,5 @@ Partial Class Login
     Friend WithEvents Txt_Username As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents login_bttn As Button
+    Friend WithEvents lbl_login As Label
 End Class
